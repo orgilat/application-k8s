@@ -1,0 +1,79 @@
+groups:
+  - name: automation-observability-recording-rules
+    interval: 30s
+    rules:
+      - record: automation:last_run_failed_tests
+        expr: |
+          sum by (environment) (
+            automation_last_run_tests{status="failed"}
+          )
+
+      - record: automation:last_run_total_tests
+        expr: |
+          sum by (environment) (
+            automation_last_run_tests{status="total"}
+          )
+
+      - record: automation:last_run_failure_ratio
+        expr: |
+          automation:last_run_failed_tests
+          /
+          clamp_min(automation:last_run_total_tests, 1)
+
+      - record: automation:history_failed_runs
+        expr: |
+          sum by (environment) (
+            automation_history_runs{status="failed"}
+          )
+
+      - record: automation:history_total_runs
+        expr: |
+          sum by (environment) (
+            automation_history_runs{status="total"}
+          )
+
+      - record: automation:history_run_failure_ratio
+        expr: |
+          automation:history_failed_runs
+          /
+          clamp_min(automation:history_total_runs, 1)
+
+      - record: automation:history_failed_tests
+        expr: |
+          sum by (environment) (
+            automation_history_tests{status="failed"}
+          )
+
+      - record: automation:history_total_tests
+        expr: |
+          sum by (environment) (
+            automation_history_tests{status="total"}
+          )
+
+      - record: automation:history_test_failure_ratio
+        expr: |
+          automation:history_failed_tests
+          /
+          clamp_min(automation:history_total_tests, 1)
+
+      - record: automation:history_run_duration_avg_seconds
+        expr: |
+          automation_history_run_duration_seconds_sum
+          /
+          clamp_min(automation_history_run_duration_seconds_count, 1)
+
+      - record: automation:seconds_since_last_run
+        expr: |
+          time() - automation_last_run_timestamp_seconds
+
+      - record: automation:last_run_suite_failure_ratio
+        expr: |
+          sum by (environment, suite) (
+            automation_last_run_tests_by_suite{status="failed"}
+          )
+          /
+          clamp_min(
+            sum by (environment, suite) (
+              automation_last_run_tests_by_suite{status="total"}
+            ), 1
+          )

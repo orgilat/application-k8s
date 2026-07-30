@@ -1,0 +1,1938 @@
+{
+  "reportFormat": "CTRF",
+  "specVersion": "0.0.0",
+  "reportId": "205fb65f-1707-4b1e-a392-964ef33d95d8",
+  "timestamp": "2026-07-14T16:59:47.049Z",
+  "generatedBy": "playwright-ctrf-json-reporter",
+  "results": {
+    "tool": {
+      "name": "playwright"
+    },
+    "summary": {
+      "tests": 88,
+      "passed": 83,
+      "failed": 5,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "start": 1784048387165,
+      "stop": 1784048409801,
+      "suites": 0
+    },
+    "tests": [
+      {
+        "name": "GET /api/assets returns paginated list",
+        "status": "passed",
+        "duration": 178,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/assets creates asset",
+        "status": "passed",
+        "duration": 196,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/assets/:id returns asset",
+        "status": "passed",
+        "duration": 218,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "PATCH /api/assets/:id/criticality updates criticality",
+        "status": "passed",
+        "duration": 239,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "PATCH /api/assets/:id/owner updates owner",
+        "status": "passed",
+        "duration": 215,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/findings returns list",
+        "status": "passed",
+        "duration": 136,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\findings.spec.ts > Findings API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/findings creates finding",
+        "status": "passed",
+        "duration": 63,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\findings.spec.ts > Findings API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/findings/:id/acknowledge changes status",
+        "status": "passed",
+        "duration": 152,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\findings.spec.ts > Findings API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/findings/bulk/acknowledge",
+        "status": "failed",
+        "duration": 94,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\findings.spec.ts:43:26",
+        "snippet": "\u001b[0m \u001b[90m 41 |\u001b[39m\n \u001b[90m 42 |\u001b[39m     \u001b[36mconst\u001b[39m bulkRes \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m apiClient\u001b[33m.\u001b[39mpost(\u001b[32m'/api/findings/bulk/acknowledge'\u001b[39m\u001b[33m,\u001b[39m { ids\u001b[33m:\u001b[39m [finding\u001b[33m.\u001b[39mid] })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 |\u001b[39m     expect(bulkRes\u001b[33m.\u001b[39mok())\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 46 |\u001b[39m\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\findings.spec.ts > Findings API",
+        "attachments": [
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\api-findings-Findings-API-POST-api-findings-bulk-acknowledge-chromium\\error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /health returns ok",
+        "status": "passed",
+        "duration": 41,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\health.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\health.spec.ts > Health endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /ready returns ready",
+        "status": "passed",
+        "duration": 36,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\health.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\health.spec.ts > Health endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/remediations returns list",
+        "status": "passed",
+        "duration": 71,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\remediations.spec.ts > Remediations API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/remediations creates remediation",
+        "status": "passed",
+        "duration": 98,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\remediations.spec.ts > Remediations API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "approve and start remediation flow",
+        "status": "passed",
+        "duration": 189,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\remediations.spec.ts > Remediations API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/reports returns list",
+        "status": "passed",
+        "duration": 69,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\reports.spec.ts > Reports API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/reports generates report",
+        "status": "passed",
+        "duration": 66,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\reports.spec.ts > Reports API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/reports/:id returns report",
+        "status": "passed",
+        "duration": 60,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\reports.spec.ts > Reports API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/scans returns list",
+        "status": "passed",
+        "duration": 65,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/scans creates scan",
+        "status": "passed",
+        "duration": 107,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/scans/:id returns scan",
+        "status": "passed",
+        "duration": 89,
+        "start": 1784048388,
+        "stop": 1784048388,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/scans/:id/cancel cancels scan",
+        "status": "passed",
+        "duration": 127,
+        "start": 1784048388,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/slow responds after delay",
+        "status": "passed",
+        "duration": 545,
+        "start": 1784048388,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/error returns 500",
+        "status": "passed",
+        "duration": 38,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/error returns 404",
+        "status": "passed",
+        "duration": 35,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/flaky sometimes succeeds",
+        "status": "passed",
+        "duration": 46,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/simulate/generate-activity creates events",
+        "status": "passed",
+        "duration": 127,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/tickets returns list",
+        "status": "passed",
+        "duration": 39,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\tickets.spec.ts > Tickets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/tickets creates ticket",
+        "status": "passed",
+        "duration": 70,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\tickets.spec.ts > Tickets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "PATCH /api/tickets/:id updates status",
+        "status": "passed",
+        "duration": 88,
+        "start": 1784048389,
+        "stop": 1784048389,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\tickets.spec.ts > Tickets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "assets table loads with data",
+        "status": "passed",
+        "duration": 3133,
+        "start": 1784048389,
+        "stop": 1784048392,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "search filters assets",
+        "status": "passed",
+        "duration": 3916,
+        "start": 1784048389,
+        "stop": 1784048393,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by type",
+        "status": "passed",
+        "duration": 3510,
+        "start": 1784048389,
+        "stop": 1784048392,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by criticality",
+        "status": "passed",
+        "duration": 3608,
+        "start": 1784048389,
+        "stop": 1784048392,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open asset details",
+        "status": "passed",
+        "duration": 3259,
+        "start": 1784048389,
+        "stop": 1784048392,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "asset details tabs work",
+        "status": "passed",
+        "duration": 3426,
+        "start": 1784048390,
+        "stop": 1784048393,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "edit asset criticality",
+        "status": "passed",
+        "duration": 2451,
+        "start": 1784048393,
+        "stop": 1784048396,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "edit asset owner",
+        "status": "passed",
+        "duration": 2311,
+        "start": 1784048394,
+        "stop": 1784048396,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "add and remove asset tag",
+        "status": "passed",
+        "duration": 1832,
+        "start": 1784048394,
+        "stop": 1784048396,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create new asset",
+        "status": "passed",
+        "duration": 2405,
+        "start": 1784048394,
+        "stop": 1784048396,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "loads and displays summary cards",
+        "status": "passed",
+        "duration": 1919,
+        "start": 1784048394,
+        "stop": 1784048396,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\dashboard.spec.ts > Dashboard",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "displays recent activity",
+        "status": "passed",
+        "duration": 1603,
+        "start": 1784048394,
+        "stop": 1784048396,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\dashboard.spec.ts > Dashboard",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "displays top risky assets",
+        "status": "passed",
+        "duration": 3209,
+        "start": 1784048396,
+        "stop": 1784048399,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\dashboard.spec.ts > Dashboard",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "has non-zero stats from seed data",
+        "status": "failed",
+        "duration": 3022,
+        "start": 1784048396,
+        "stop": 1784048399,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31mNaN\u001b[39m",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31mNaN\u001b[39m\n    at C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\dashboard.spec.ts:38:41",
+        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m dashboard\u001b[33m.\u001b[39mwaitForLoad()\u001b[33m;\u001b[39m\n \u001b[90m 37 |\u001b[39m     \u001b[36mconst\u001b[39m totalAssets \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m dashboard\u001b[33m.\u001b[39mstatCard(\u001b[32m'stat-total-assets'\u001b[39m)\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     expect(\u001b[33mNumber\u001b[39m(totalAssets\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim()))\u001b[33m.\u001b[39mtoBeGreaterThan(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\dashboard.spec.ts > Dashboard",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-dashboard-Dashboard-has-non-zero-stats-from-seed-data-chromium\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-dashboard-Dashboard-has-non-zero-stats-from-seed-data-chromium\\error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "findings table loads",
+        "status": "passed",
+        "duration": 2507,
+        "start": 1784048396,
+        "stop": 1784048399,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "search findings",
+        "status": "passed",
+        "duration": 2990,
+        "start": 1784048396,
+        "stop": 1784048399,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by severity",
+        "status": "passed",
+        "duration": 2662,
+        "start": 1784048396,
+        "stop": 1784048399,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by status",
+        "status": "passed",
+        "duration": 2340,
+        "start": 1784048396,
+        "stop": 1784048399,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open finding details",
+        "status": "passed",
+        "duration": 1020,
+        "start": 1784048399,
+        "stop": 1784048400,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "acknowledge finding",
+        "status": "passed",
+        "duration": 1778,
+        "start": 1784048399,
+        "stop": 1784048401,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "mark finding false positive",
+        "status": "passed",
+        "duration": 1988,
+        "start": 1784048399,
+        "stop": 1784048401,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "reopen finding",
+        "status": "passed",
+        "duration": 1908,
+        "start": 1784048399,
+        "stop": 1784048401,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "bulk acknowledge findings",
+        "status": "passed",
+        "duration": 2005,
+        "start": 1784048399,
+        "stop": 1784048401,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "finding details tabs",
+        "status": "passed",
+        "duration": 930,
+        "start": 1784048400,
+        "stop": 1784048401,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "sidebar is visible",
+        "status": "passed",
+        "duration": 922,
+        "start": 1784048401,
+        "stop": 1784048402,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /assets",
+        "status": "passed",
+        "duration": 666,
+        "start": 1784048401,
+        "stop": 1784048401,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /findings",
+        "status": "passed",
+        "duration": 706,
+        "start": 1784048401,
+        "stop": 1784048401,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /scans",
+        "status": "passed",
+        "duration": 857,
+        "start": 1784048401,
+        "stop": 1784048402,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /remediations",
+        "status": "passed",
+        "duration": 909,
+        "start": 1784048401,
+        "stop": 1784048402,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /tickets",
+        "status": "passed",
+        "duration": 1015,
+        "start": 1784048401,
+        "stop": 1784048402,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /reports",
+        "status": "passed",
+        "duration": 933,
+        "start": 1784048401,
+        "stop": 1784048402,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /activity",
+        "status": "passed",
+        "duration": 989,
+        "start": 1784048401,
+        "stop": 1784048402,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /users",
+        "status": "passed",
+        "duration": 976,
+        "start": 1784048402,
+        "stop": 1784048403,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /settings",
+        "status": "passed",
+        "duration": 1234,
+        "start": 1784048402,
+        "stop": 1784048403,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "remediations page loads",
+        "status": "passed",
+        "duration": 1002,
+        "start": 1784048402,
+        "stop": 1784048403,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "remediations table shows data",
+        "status": "passed",
+        "duration": 902,
+        "start": 1784048402,
+        "stop": 1784048403,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open remediation details",
+        "status": "passed",
+        "duration": 1246,
+        "start": 1784048402,
+        "stop": 1784048404,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "approve remediation",
+        "status": "passed",
+        "duration": 1933,
+        "start": 1784048403,
+        "stop": 1784048405,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "start remediation from finding",
+        "status": "passed",
+        "duration": 1942,
+        "start": 1784048403,
+        "stop": 1784048405,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "reports page loads",
+        "status": "passed",
+        "duration": 753,
+        "start": 1784048403,
+        "stop": 1784048404,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\reports.spec.ts > Reports",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "reports table shows seeded data",
+        "status": "passed",
+        "duration": 795,
+        "start": 1784048403,
+        "stop": 1784048404,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\reports.spec.ts > Reports",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "generate new report",
+        "status": "failed",
+        "duration": 1597,
+        "start": 1784048403,
+        "stop": 1784048405,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright E2E Report')\nExpected: visible\nError: strict mode violation: getByText('Playwright E2E Report') resolved to 3 elements:\n    1) <span>Playwright E2E Report</span> aka getByTestId('table-row-0').getByText('Playwright E2E Report')\n    2) <span>Playwright E2E Report</span> aka getByTestId('table-row-2').getByText('Playwright E2E Report')\n    3) <span>Playwright E2E Report</span> aka getByTestId('table-row-4').getByText('Playwright E2E Report')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright E2E Report')\u001b[22m\n",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright E2E Report')\nExpected: visible\nError: strict mode violation: getByText('Playwright E2E Report') resolved to 3 elements:\n    1) <span>Playwright E2E Report</span> aka getByTestId('table-row-0').getByText('Playwright E2E Report')\n    2) <span>Playwright E2E Report</span> aka getByTestId('table-row-2').getByText('Playwright E2E Report')\n    3) <span>Playwright E2E Report</span> aka getByTestId('table-row-4').getByText('Playwright E2E Report')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright E2E Report')\u001b[22m\n\n    at C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\reports.spec.ts:27:59",
+        "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-testid=\"submit-generate-report\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m500\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Playwright E2E Report'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m   test(\u001b[32m'open report details'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\reports.spec.ts > Reports",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-reports-Reports-generate-new-report-chromium\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-reports-Reports-generate-new-report-chromium\\error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open report details",
+        "status": "passed",
+        "duration": 794,
+        "start": 1784048404,
+        "stop": 1784048404,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\reports.spec.ts > Reports",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "scans page loads",
+        "status": "passed",
+        "duration": 601,
+        "start": 1784048404,
+        "stop": 1784048405,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "scans table shows data",
+        "status": "passed",
+        "duration": 576,
+        "start": 1784048404,
+        "stop": 1784048405,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create new scan",
+        "status": "passed",
+        "duration": 1460,
+        "start": 1784048404,
+        "stop": 1784048406,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "scan appears in list after creation",
+        "status": "failed",
+        "duration": 2117,
+        "start": 1784048405,
+        "stop": 1784048407,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('E2E Scan Test')\nExpected: visible\nError: strict mode violation: getByText('E2E Scan Test') resolved to 3 elements:\n    1) <span>E2E Scan Test</span> aka getByTestId('table-row-0').getByText('E2E Scan Test')\n    2) <span>E2E Scan Test</span> aka getByTestId('table-row-4').getByText('E2E Scan Test')\n    3) <span>E2E Scan Test</span> aka getByTestId('table-row-8').getByText('E2E Scan Test')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('E2E Scan Test')\u001b[22m\n",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('E2E Scan Test')\nExpected: visible\nError: strict mode violation: getByText('E2E Scan Test') resolved to 3 elements:\n    1) <span>E2E Scan Test</span> aka getByTestId('table-row-0').getByText('E2E Scan Test')\n    2) <span>E2E Scan Test</span> aka getByTestId('table-row-4').getByText('E2E Scan Test')\n    3) <span>E2E Scan Test</span> aka getByTestId('table-row-8').getByText('E2E Scan Test')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('E2E Scan Test')\u001b[22m\n\n    at C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\scans.spec.ts:38:51",
+        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 37 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'E2E Scan Test'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m\n \u001b[90m 41 |\u001b[39m   test(\u001b[32m'open scan details page'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\scans.spec.ts > Scans",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-scans-Scans-scan-appears-in-list-after-creation-chromium\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-scans-Scans-scan-appears-in-list-after-creation-chromium\\error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open scan details page",
+        "status": "passed",
+        "duration": 961,
+        "start": 1784048405,
+        "stop": 1784048406,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "settings page loads",
+        "status": "passed",
+        "duration": 799,
+        "start": 1784048405,
+        "stop": 1784048405,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\settings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\settings.spec.ts > Settings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "settings form shows organization name",
+        "status": "passed",
+        "duration": 849,
+        "start": 1784048405,
+        "stop": 1784048406,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\settings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\settings.spec.ts > Settings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "update settings",
+        "status": "passed",
+        "duration": 1404,
+        "start": 1784048407,
+        "stop": 1784048408,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\settings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\settings.spec.ts > Settings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "tickets page loads",
+        "status": "passed",
+        "duration": 712,
+        "start": 1784048406,
+        "stop": 1784048406,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "tickets table shows data",
+        "status": "passed",
+        "duration": 726,
+        "start": 1784048406,
+        "stop": 1784048406,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create ticket",
+        "status": "failed",
+        "duration": 2430,
+        "start": 1784048406,
+        "stop": 1784048408,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright Test Ticket')\nExpected: visible\nError: strict mode violation: getByText('Playwright Test Ticket') resolved to 3 elements:\n    1) <span>Playwright Test Ticket</span> aka getByTestId('table-row-0').getByText('Playwright Test Ticket')\n    2) <span>Playwright Test Ticket</span> aka getByTestId('table-row-4').getByText('Playwright Test Ticket')\n    3) <span>Playwright Test Ticket</span> aka getByTestId('table-row-8').getByText('Playwright Test Ticket')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright Test Ticket')\u001b[22m\n",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright Test Ticket')\nExpected: visible\nError: strict mode violation: getByText('Playwright Test Ticket') resolved to 3 elements:\n    1) <span>Playwright Test Ticket</span> aka getByTestId('table-row-0').getByText('Playwright Test Ticket')\n    2) <span>Playwright Test Ticket</span> aka getByTestId('table-row-4').getByText('Playwright Test Ticket')\n    3) <span>Playwright Test Ticket</span> aka getByTestId('table-row-8').getByText('Playwright Test Ticket')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright Test Ticket')\u001b[22m\n\n    at C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\tickets.spec.ts:26:60",
+        "snippet": "\u001b[0m \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-testid=\"submit-create-ticket\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m500\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Playwright Test Ticket'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m   test(\u001b[32m'open ticket details'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\tickets.spec.ts > Tickets",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-tickets-Tickets-create-ticket-chromium\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\test-results\\ui-tickets-Tickets-create-ticket-chromium\\error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open ticket details",
+        "status": "passed",
+        "duration": 784,
+        "start": 1784048406,
+        "stop": 1784048407,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "update ticket status",
+        "status": "passed",
+        "duration": 2042,
+        "start": 1784048406,
+        "stop": 1784048408,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create ticket from finding",
+        "status": "passed",
+        "duration": 2471,
+        "start": 1784048406,
+        "stop": 1784048409,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "users page loads",
+        "status": "passed",
+        "duration": 645,
+        "start": 1784048407,
+        "stop": 1784048407,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\users.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\users.spec.ts > Users",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "users table shows seeded users",
+        "status": "passed",
+        "duration": 482,
+        "start": 1784048408,
+        "stop": 1784048409,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\ui\\users.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui\\users.spec.ts > Users",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      }
+    ]
+  }
+}

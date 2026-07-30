@@ -1,0 +1,75 @@
+discovery.docker "containers" {
+  host = "unix:///var/run/docker.sock"
+
+  // Default is 60s. Lowered so short-lived containers (e.g. the Playwright
+  // test runner, which lives ~30s) are discovered and their logs shipped
+  // to Loki before they exit.
+  refresh_interval = "5s"
+}
+
+discovery.relabel "docker_logs" {
+  targets = discovery.docker.containers.targets
+
+  rule {
+    source_labels = ["__meta_docker_container_name"]
+    regex         = "/(.*)"
+    target_label  = "container"
+  }
+
+  rule {
+    target_label = "environment"
+    replacement  = "local"
+  }
+
+  rule {
+    target_label = "log_source"
+    replacement  = "docker"
+  }
+}
+
+loki.source.docker "docker_logs" {
+  host       = "unix:///var/run/docker.sock"
+  targets    = discovery.relabel.docker_logs.output
+  forward_to = [loki.process.docker.receiver]
+}
+
+loki.process "docker" {
+  stage.docker {}
+
+  forward_to = [loki.write.local.receiver]
+}
+
+loki.write "local" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+  }
+}
+otelcol.receiver.otlp "automation_traces" {
+  http {
+    endpoint = "0.0.0.0:4318"
+  }
+
+  grpc {
+    endpoint = "0.0.0.0:4317"
+  }
+
+  output {
+    traces = [otelcol.processor.batch.automation_traces.input]
+  }
+}
+
+otelcol.processor.batch "automation_traces" {
+  output {
+    traces = [otelcol.exporter.otlp.tempo.input]
+  }
+}
+
+otelcol.exporter.otlp "tempo" {
+  client {
+    endpoint = "tempo:4317"
+
+    tls {
+      insecure = true
+    }
+  }
+}

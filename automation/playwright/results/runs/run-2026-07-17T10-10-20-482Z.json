@@ -1,0 +1,1938 @@
+{
+  "reportFormat": "CTRF",
+  "specVersion": "0.0.0",
+  "reportId": "43ad779e-5dd1-41ca-9570-20f99b059832",
+  "timestamp": "2026-07-17T10:10:21.515Z",
+  "generatedBy": "playwright-ctrf-json-reporter",
+  "results": {
+    "tool": {
+      "name": "playwright"
+    },
+    "summary": {
+      "tests": 88,
+      "passed": 83,
+      "failed": 5,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "start": 1784283022639,
+      "stop": 1784283085458,
+      "suites": 0
+    },
+    "tests": [
+      {
+        "name": "GET /api/assets returns paginated list",
+        "status": "passed",
+        "duration": 820,
+        "start": 1784283023,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/assets creates asset",
+        "status": "passed",
+        "duration": 631,
+        "start": 1784283023,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/assets/:id returns asset",
+        "status": "passed",
+        "duration": 849,
+        "start": 1784283023,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "PATCH /api/assets/:id/criticality updates criticality",
+        "status": "passed",
+        "duration": 881,
+        "start": 1784283023,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "PATCH /api/assets/:id/owner updates owner",
+        "status": "passed",
+        "duration": 879,
+        "start": 1784283023,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/assets.spec.ts > Assets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/findings returns list",
+        "status": "passed",
+        "duration": 729,
+        "start": 1784283023,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/findings.spec.ts > Findings API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/findings creates finding",
+        "status": "passed",
+        "duration": 81,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/findings.spec.ts > Findings API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/findings/:id/acknowledge changes status",
+        "status": "passed",
+        "duration": 99,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/findings.spec.ts > Findings API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/findings/bulk/acknowledge",
+        "status": "failed",
+        "duration": 94,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /work/tests/api/findings.spec.ts:43:26",
+        "snippet": "\u001b[0m \u001b[90m 41 |\u001b[39m\n \u001b[90m 42 |\u001b[39m     \u001b[36mconst\u001b[39m bulkRes \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m apiClient\u001b[33m.\u001b[39mpost(\u001b[32m'/api/findings/bulk/acknowledge'\u001b[39m\u001b[33m,\u001b[39m { ids\u001b[33m:\u001b[39m [finding\u001b[33m.\u001b[39mid] })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 |\u001b[39m     expect(bulkRes\u001b[33m.\u001b[39mok())\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 46 |\u001b[39m\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/findings.spec.ts > Findings API",
+        "attachments": [
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "/work/test-results/api-findings-Findings-API-POST-api-findings-bulk-acknowledge-chromium/error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /health returns ok",
+        "status": "passed",
+        "duration": 27,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/health.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/health.spec.ts > Health endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /ready returns ready",
+        "status": "passed",
+        "duration": 26,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/health.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/health.spec.ts > Health endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/remediations returns list",
+        "status": "passed",
+        "duration": 40,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/remediations.spec.ts > Remediations API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/remediations creates remediation",
+        "status": "passed",
+        "duration": 61,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/remediations.spec.ts > Remediations API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "approve and start remediation flow",
+        "status": "passed",
+        "duration": 191,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/remediations.spec.ts > Remediations API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/reports returns list",
+        "status": "passed",
+        "duration": 48,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/reports.spec.ts > Reports API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/reports generates report",
+        "status": "passed",
+        "duration": 82,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/reports.spec.ts > Reports API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/reports/:id returns report",
+        "status": "passed",
+        "duration": 54,
+        "start": 1784283024,
+        "stop": 1784283024,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/reports.spec.ts > Reports API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/scans returns list",
+        "status": "passed",
+        "duration": 93,
+        "start": 1784283026,
+        "stop": 1784283026,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/scans creates scan",
+        "status": "passed",
+        "duration": 62,
+        "start": 1784283024,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/scans/:id returns scan",
+        "status": "passed",
+        "duration": 64,
+        "start": 1784283024,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/scans/:id/cancel cancels scan",
+        "status": "passed",
+        "duration": 159,
+        "start": 1784283024,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/scans.spec.ts > Scans API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/slow responds after delay",
+        "status": "passed",
+        "duration": 650,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/error returns 500",
+        "status": "passed",
+        "duration": 69,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/error returns 404",
+        "status": "passed",
+        "duration": 22,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/simulate/flaky sometimes succeeds",
+        "status": "passed",
+        "duration": 25,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/simulate/generate-activity creates events",
+        "status": "passed",
+        "duration": 120,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/simulate.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/simulate.spec.ts > Simulate endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /api/tickets returns list",
+        "status": "passed",
+        "duration": 56,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/tickets.spec.ts > Tickets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "POST /api/tickets creates ticket",
+        "status": "passed",
+        "duration": 54,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/tickets.spec.ts > Tickets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "PATCH /api/tickets/:id updates status",
+        "status": "passed",
+        "duration": 78,
+        "start": 1784283025,
+        "stop": 1784283025,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/api/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api/tickets.spec.ts > Tickets API",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "assets table loads with data",
+        "status": "passed",
+        "duration": 10998,
+        "start": 1784283025,
+        "stop": 1784283036,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "search filters assets",
+        "status": "passed",
+        "duration": 11867,
+        "start": 1784283025,
+        "stop": 1784283037,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by type",
+        "status": "passed",
+        "duration": 12325,
+        "start": 1784283025,
+        "stop": 1784283037,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by criticality",
+        "status": "passed",
+        "duration": 11025,
+        "start": 1784283025,
+        "stop": 1784283036,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open asset details",
+        "status": "passed",
+        "duration": 11592,
+        "start": 1784283025,
+        "stop": 1784283037,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "asset details tabs work",
+        "status": "passed",
+        "duration": 11859,
+        "start": 1784283026,
+        "stop": 1784283038,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "edit asset criticality",
+        "status": "passed",
+        "duration": 2115,
+        "start": 1784283043,
+        "stop": 1784283046,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "edit asset owner",
+        "status": "passed",
+        "duration": 2124,
+        "start": 1784283044,
+        "stop": 1784283046,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "add and remove asset tag",
+        "status": "passed",
+        "duration": 1766,
+        "start": 1784283044,
+        "stop": 1784283046,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create new asset",
+        "status": "passed",
+        "duration": 1698,
+        "start": 1784283044,
+        "stop": 1784283046,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/assets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/assets.spec.ts > Assets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "loads and displays summary cards",
+        "status": "passed",
+        "duration": 1263,
+        "start": 1784283044,
+        "stop": 1784283046,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/dashboard.spec.ts > Dashboard",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "displays recent activity",
+        "status": "passed",
+        "duration": 1010,
+        "start": 1784283045,
+        "stop": 1784283046,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/dashboard.spec.ts > Dashboard",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "displays top risky assets",
+        "status": "passed",
+        "duration": 1310,
+        "start": 1784283046,
+        "stop": 1784283047,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/dashboard.spec.ts > Dashboard",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "has non-zero stats from seed data",
+        "status": "failed",
+        "duration": 1462,
+        "start": 1784283046,
+        "stop": 1784283047,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31mNaN\u001b[39m",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31mNaN\u001b[39m\n    at /work/tests/ui/dashboard.spec.ts:38:41",
+        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m dashboard\u001b[33m.\u001b[39mwaitForLoad()\u001b[33m;\u001b[39m\n \u001b[90m 37 |\u001b[39m     \u001b[36mconst\u001b[39m totalAssets \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m dashboard\u001b[33m.\u001b[39mstatCard(\u001b[32m'stat-total-assets'\u001b[39m)\u001b[33m.\u001b[39mtextContent()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     expect(\u001b[33mNumber\u001b[39m(totalAssets\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim()))\u001b[33m.\u001b[39mtoBeGreaterThan(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/dashboard.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/dashboard.spec.ts > Dashboard",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "/work/test-results/ui-dashboard-Dashboard-has-non-zero-stats-from-seed-data-chromium/test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "/work/test-results/ui-dashboard-Dashboard-has-non-zero-stats-from-seed-data-chromium/error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "findings table loads",
+        "status": "passed",
+        "duration": 1393,
+        "start": 1784283046,
+        "stop": 1784283047,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "search findings",
+        "status": "passed",
+        "duration": 2215,
+        "start": 1784283046,
+        "stop": 1784283048,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by severity",
+        "status": "passed",
+        "duration": 2295,
+        "start": 1784283046,
+        "stop": 1784283048,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "filter by status",
+        "status": "passed",
+        "duration": 1884,
+        "start": 1784283046,
+        "stop": 1784283048,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open finding details",
+        "status": "passed",
+        "duration": 1150,
+        "start": 1784283047,
+        "stop": 1784283048,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "acknowledge finding",
+        "status": "passed",
+        "duration": 2719,
+        "start": 1784283047,
+        "stop": 1784283050,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "mark finding false positive",
+        "status": "passed",
+        "duration": 12068,
+        "start": 1784283054,
+        "stop": 1784283066,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "reopen finding",
+        "status": "passed",
+        "duration": 2454,
+        "start": 1784283048,
+        "stop": 1784283051,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "bulk acknowledge findings",
+        "status": "passed",
+        "duration": 5884,
+        "start": 1784283048,
+        "stop": 1784283054,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "finding details tabs",
+        "status": "passed",
+        "duration": 6521,
+        "start": 1784283048,
+        "stop": 1784283055,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/findings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/findings.spec.ts > Findings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "sidebar is visible",
+        "status": "passed",
+        "duration": 1860,
+        "start": 1784283049,
+        "stop": 1784283050,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /assets",
+        "status": "passed",
+        "duration": 4048,
+        "start": 1784283050,
+        "stop": 1784283054,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /findings",
+        "status": "passed",
+        "duration": 4546,
+        "start": 1784283051,
+        "stop": 1784283055,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /scans",
+        "status": "passed",
+        "duration": 4140,
+        "start": 1784283051,
+        "stop": 1784283055,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /remediations",
+        "status": "passed",
+        "duration": 6175,
+        "start": 1784283054,
+        "stop": 1784283060,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /tickets",
+        "status": "passed",
+        "duration": 5765,
+        "start": 1784283054,
+        "stop": 1784283060,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /reports",
+        "status": "passed",
+        "duration": 5629,
+        "start": 1784283055,
+        "stop": 1784283061,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /activity",
+        "status": "passed",
+        "duration": 5749,
+        "start": 1784283055,
+        "stop": 1784283061,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /users",
+        "status": "passed",
+        "duration": 5754,
+        "start": 1784283055,
+        "stop": 1784283061,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "navigates to /settings",
+        "status": "passed",
+        "duration": 7033,
+        "start": 1784283060,
+        "stop": 1784283067,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/navigation.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/navigation.spec.ts > Navigation",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "remediations page loads",
+        "status": "passed",
+        "duration": 6243,
+        "start": 1784283061,
+        "stop": 1784283067,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "remediations table shows data",
+        "status": "passed",
+        "duration": 5737,
+        "start": 1784283061,
+        "stop": 1784283067,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open remediation details",
+        "status": "passed",
+        "duration": 7202,
+        "start": 1784283061,
+        "stop": 1784283068,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "approve remediation",
+        "status": "passed",
+        "duration": 6752,
+        "start": 1784283062,
+        "stop": 1784283068,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "start remediation from finding",
+        "status": "passed",
+        "duration": 4443,
+        "start": 1784283067,
+        "stop": 1784283072,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/remediations.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/remediations.spec.ts > Remediations",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "reports page loads",
+        "status": "passed",
+        "duration": 3370,
+        "start": 1784283068,
+        "stop": 1784283071,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/reports.spec.ts > Reports",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "reports table shows seeded data",
+        "status": "passed",
+        "duration": 1894,
+        "start": 1784283068,
+        "stop": 1784283070,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/reports.spec.ts > Reports",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "generate new report",
+        "status": "failed",
+        "duration": 5425,
+        "start": 1784283068,
+        "stop": 1784283073,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright E2E Report')\nExpected: visible\nError: strict mode violation: getByText('Playwright E2E Report') resolved to 9 elements:\n    1) <span>Playwright E2E Report</span> aka getByTestId('table-row-1').getByText('Playwright E2E Report')\n    2) <span>Playwright E2E Report</span> aka getByTestId('table-row-3').getByText('Playwright E2E Report')\n    3) <span>Playwright E2E Report</span> aka getByTestId('table-row-5').getByText('Playwright E2E Report')\n    4) <span>Playwright E2E Report</span> aka getByTestId('table-row-7').getByText('Playwright E2E Report')\n    5) <span>Playwright E2E Report</span> aka getByTestId('table-row-9').getByText('Playwright E2E Report')\n    6) <span>Playwright E2E Report</span> aka getByTestId('table-row-11').getByText('Playwright E2E Report')\n    7) <span>Playwright E2E Report</span> aka locator('tr:nth-child(14) > td > span').first()\n    8) <span>Playwright E2E Report</span> aka locator('tr:nth-child(18) > td > span').first()\n    9) <span>Playwright E2E Report</span> aka locator('tr:nth-child(20) > td > span').first()\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright E2E Report')\u001b[22m\n",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright E2E Report')\nExpected: visible\nError: strict mode violation: getByText('Playwright E2E Report') resolved to 9 elements:\n    1) <span>Playwright E2E Report</span> aka getByTestId('table-row-1').getByText('Playwright E2E Report')\n    2) <span>Playwright E2E Report</span> aka getByTestId('table-row-3').getByText('Playwright E2E Report')\n    3) <span>Playwright E2E Report</span> aka getByTestId('table-row-5').getByText('Playwright E2E Report')\n    4) <span>Playwright E2E Report</span> aka getByTestId('table-row-7').getByText('Playwright E2E Report')\n    5) <span>Playwright E2E Report</span> aka getByTestId('table-row-9').getByText('Playwright E2E Report')\n    6) <span>Playwright E2E Report</span> aka getByTestId('table-row-11').getByText('Playwright E2E Report')\n    7) <span>Playwright E2E Report</span> aka locator('tr:nth-child(14) > td > span').first()\n    8) <span>Playwright E2E Report</span> aka locator('tr:nth-child(18) > td > span').first()\n    9) <span>Playwright E2E Report</span> aka locator('tr:nth-child(20) > td > span').first()\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright E2E Report')\u001b[22m\n\n    at /work/tests/ui/reports.spec.ts:27:59",
+        "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-testid=\"submit-generate-report\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m500\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Playwright E2E Report'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m   test(\u001b[32m'open report details'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/reports.spec.ts > Reports",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "/work/test-results/ui-reports-Reports-generate-new-report-chromium/test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "/work/test-results/ui-reports-Reports-generate-new-report-chromium/error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open report details",
+        "status": "passed",
+        "duration": 2963,
+        "start": 1784283068,
+        "stop": 1784283071,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/reports.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/reports.spec.ts > Reports",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "scans page loads",
+        "status": "passed",
+        "duration": 2822,
+        "start": 1784283069,
+        "stop": 1784283071,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "scans table shows data",
+        "status": "passed",
+        "duration": 1932,
+        "start": 1784283070,
+        "stop": 1784283072,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create new scan",
+        "status": "passed",
+        "duration": 2370,
+        "start": 1784283072,
+        "stop": 1784283075,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "scan appears in list after creation",
+        "status": "failed",
+        "duration": 3758,
+        "start": 1784283072,
+        "stop": 1784283076,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('E2E Scan Test')\nExpected: visible\nError: strict mode violation: getByText('E2E Scan Test') resolved to 5 elements:\n    1) <span>E2E Scan Test</span> aka getByTestId('table-row-0').getByText('E2E Scan Test')\n    2) <span>E2E Scan Test</span> aka getByTestId('table-row-4').getByText('E2E Scan Test')\n    3) <span>E2E Scan Test</span> aka getByTestId('table-row-8').getByText('E2E Scan Test')\n    4) <span>E2E Scan Test</span> aka getByTestId('table-row-12').getByText('E2E Scan Test')\n    5) <span>E2E Scan Test</span> aka getByTestId('table-row-16').getByText('E2E Scan Test')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('E2E Scan Test')\u001b[22m\n",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('E2E Scan Test')\nExpected: visible\nError: strict mode violation: getByText('E2E Scan Test') resolved to 5 elements:\n    1) <span>E2E Scan Test</span> aka getByTestId('table-row-0').getByText('E2E Scan Test')\n    2) <span>E2E Scan Test</span> aka getByTestId('table-row-4').getByText('E2E Scan Test')\n    3) <span>E2E Scan Test</span> aka getByTestId('table-row-8').getByText('E2E Scan Test')\n    4) <span>E2E Scan Test</span> aka getByTestId('table-row-12').getByText('E2E Scan Test')\n    5) <span>E2E Scan Test</span> aka getByTestId('table-row-16').getByText('E2E Scan Test')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('E2E Scan Test')\u001b[22m\n\n    at /work/tests/ui/scans.spec.ts:38:51",
+        "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m1000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 37 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'E2E Scan Test'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m\n \u001b[90m 41 |\u001b[39m   test(\u001b[32m'open scan details page'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/scans.spec.ts > Scans",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "/work/test-results/ui-scans-Scans-scan-appears-in-list-after-creation-chromium/test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "/work/test-results/ui-scans-Scans-scan-appears-in-list-after-creation-chromium/error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open scan details page",
+        "status": "passed",
+        "duration": 1527,
+        "start": 1784283072,
+        "stop": 1784283074,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/scans.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/scans.spec.ts > Scans",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "settings page loads",
+        "status": "passed",
+        "duration": 2128,
+        "start": 1784283072,
+        "stop": 1784283074,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/settings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/settings.spec.ts > Settings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "settings form shows organization name",
+        "status": "passed",
+        "duration": 2112,
+        "start": 1784283072,
+        "stop": 1784283074,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/settings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/settings.spec.ts > Settings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "update settings",
+        "status": "passed",
+        "duration": 1489,
+        "start": 1784283079,
+        "stop": 1784283081,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/settings.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/settings.spec.ts > Settings",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "tickets page loads",
+        "status": "passed",
+        "duration": 1717,
+        "start": 1784283075,
+        "stop": 1784283076,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "tickets table shows data",
+        "status": "passed",
+        "duration": 2096,
+        "start": 1784283075,
+        "stop": 1784283077,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create ticket",
+        "status": "failed",
+        "duration": 3190,
+        "start": 1784283075,
+        "stop": 1784283078,
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright Test Ticket')\nExpected: visible\nError: strict mode violation: getByText('Playwright Test Ticket') resolved to 5 elements:\n    1) <span>Playwright Test Ticket</span> aka getByTestId('table-row-3').getByText('Playwright Test Ticket')\n    2) <span>Playwright Test Ticket</span> aka getByTestId('table-row-7').getByText('Playwright Test Ticket')\n    3) <span>Playwright Test Ticket</span> aka getByTestId('table-row-11').getByText('Playwright Test Ticket')\n    4) <span>Playwright Test Ticket</span> aka getByTestId('table-row-15').getByText('Playwright Test Ticket')\n    5) <span>Playwright Test Ticket</span> aka getByTestId('table-row-19').getByText('Playwright Test Ticket')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright Test Ticket')\u001b[22m\n",
+        "trace": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Playwright Test Ticket')\nExpected: visible\nError: strict mode violation: getByText('Playwright Test Ticket') resolved to 5 elements:\n    1) <span>Playwright Test Ticket</span> aka getByTestId('table-row-3').getByText('Playwright Test Ticket')\n    2) <span>Playwright Test Ticket</span> aka getByTestId('table-row-7').getByText('Playwright Test Ticket')\n    3) <span>Playwright Test Ticket</span> aka getByTestId('table-row-11').getByText('Playwright Test Ticket')\n    4) <span>Playwright Test Ticket</span> aka getByTestId('table-row-15').getByText('Playwright Test Ticket')\n    5) <span>Playwright Test Ticket</span> aka getByTestId('table-row-19').getByText('Playwright Test Ticket')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Playwright Test Ticket')\u001b[22m\n\n    at /work/tests/ui/tickets.spec.ts:26:60",
+        "snippet": "\u001b[0m \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-testid=\"submit-create-ticket\"]'\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m500\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m'Playwright Test Ticket'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m\n \u001b[90m 29 |\u001b[39m   test(\u001b[32m'open ticket details'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m",
+        "rawStatus": "failed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/tickets.spec.ts > Tickets",
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "/work/test-results/ui-tickets-Tickets-create-ticket-chromium/test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "/work/test-results/ui-tickets-Tickets-create-ticket-chromium/error-context.md"
+          }
+        ],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "open ticket details",
+        "status": "passed",
+        "duration": 1898,
+        "start": 1784283075,
+        "stop": 1784283077,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "update ticket status",
+        "status": "passed",
+        "duration": 1552,
+        "start": 1784283076,
+        "stop": 1784283078,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "create ticket from finding",
+        "status": "passed",
+        "duration": 2153,
+        "start": 1784283077,
+        "stop": 1784283079,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/tickets.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/tickets.spec.ts > Tickets",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "users page loads",
+        "status": "passed",
+        "duration": 1014,
+        "start": 1784283077,
+        "stop": 1784283078,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/users.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/users.spec.ts > Users",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "users table shows seeded users",
+        "status": "passed",
+        "duration": 812,
+        "start": 1784283079,
+        "stop": 1784283080,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "/work/tests/ui/users.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > ui/users.spec.ts > Users",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      }
+    ]
+  }
+}

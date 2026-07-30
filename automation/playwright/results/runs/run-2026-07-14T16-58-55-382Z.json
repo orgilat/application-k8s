@@ -1,0 +1,67 @@
+{
+  "reportFormat": "CTRF",
+  "specVersion": "0.0.0",
+  "reportId": "89a25e52-5a08-4ccb-8624-e867ebf0eaf4",
+  "timestamp": "2026-07-14T16:58:57.906Z",
+  "generatedBy": "playwright-ctrf-json-reporter",
+  "results": {
+    "tool": {
+      "name": "playwright"
+    },
+    "summary": {
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "start": 1784048337942,
+      "stop": 1784048338930,
+      "suites": 0
+    },
+    "tests": [
+      {
+        "name": "GET /health returns ok",
+        "status": "passed",
+        "duration": 60,
+        "start": 1784048338,
+        "stop": 1784048338,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\health.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\health.spec.ts > Health endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      },
+      {
+        "name": "GET /ready returns ready",
+        "status": "passed",
+        "duration": 99,
+        "start": 1784048338,
+        "stop": 1784048338,
+        "rawStatus": "passed",
+        "tags": [],
+        "type": "e2e",
+        "filePath": "C:\\Users\\User\\exposure-automation-lab\\automation\\playwright\\tests\\api\\health.spec.ts",
+        "retries": 0,
+        "flaky": false,
+        "steps": [],
+        "suite": "chromium > api\\health.spec.ts > Health endpoints",
+        "attachments": [],
+        "stdout": [],
+        "stderr": [],
+        "extra": {
+          "annotations": []
+        }
+      }
+    ]
+  }
+}

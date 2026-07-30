@@ -1,0 +1,1183 @@
+<!doctype html><html><head><!-- frame-runtime --><script>window.__FRAME_PREAMBLE={"capabilities":{"downloads":"downloads.DUzXFHNF.js","mcp":"mcp.CLzOm9JX.js","permissions":"permissions.C9OCnDjh.js","self":"self.DqF_PxOe.js"},"transforms":"_transforms.DYk1Ltlh.js","comments":"_comments.CTmG5kkF.js"}</script><script>(function(){"use strict";const ce="modulepreload",le=function(e){return"/"+e},ue={},x=function(t,n,u){let o=Promise.resolve();function s(f){const a=new Event("vite:preloadError",{cancelable:!0});if(a.payload=f,window.dispatchEvent(a),!a.defaultPrevented)throw f}return o.then(f=>{for(const a of f||[])a.status==="rejected"&&s(a.reason);return t().catch(s)})},K=["light","dark","system"];function G(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_init;return t!=null&&typeof t=="object"}function J(e){return e!=null&&typeof e=="object"&&e.__frame_size_poke===!0}function V(e){if(e==null||typeof e!="object")return!1;const t=e.__frame_theme;if(t==null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&K.includes(n)}function Y(e){try{typeof reportError=="function"?reportError(e):setTimeout(()=>{throw e},0)}catch{}}function z(e){if(window===top||e.type==="auxclick"&&e.button!==1)return;const t=e.composedPath?e.composedPath():[e.target];let n=null;for(let f=0;f<t.length;f++){const a=t[f];if(a&&a.matches&&a.matches("a[href],area[href]")){n=a;break}}if(!n&&e.target&&e.target.closest&&(n=e.target.closest("a[href],area[href]")),!n)return;const u=n.getAttribute("href");if(!u)return;let o,s;try{o=new URL(u,document.baseURI),s=new URL(document.baseURI).origin}catch{return}(o.protocol==="http:"||o.protocol==="https:")&&o.origin!==s&&(e.preventDefault(),parent.postMessage({__frame_nav:!0,url:o.href},"*"))}const D={};function T(e){if(window===top)return;const t=Date.now();t-(D[e]||0)<500||(D[e]=t,parent.postMessage({__frame_engaged:!0,kind:e},"*"))}const Q=2e3,U=["wheel","touchstart","touchmove","keydown","pointerdown"];let B=0;function X(e){e.isTrusted&&(B=Date.now())}function Z(){addEventListener("click",z,!0),addEventListener("auxclick",z,!0)}function ee(){for(let e=0;e<U.length;e++)addEventListener(U[e],X,{capture:!0,passive:!0});addEventListener("scroll",e=>{e.isTrusted&&Date.now()-B<Q&&T("scroll")},{capture:!0,passive:!0}),addEventListener("pointermove",e=>{e.isTrusted&&T("pointer")},{capture:!0,passive:!0}),addEventListener("click",e=>{e.isTrusted&&T("click")},{capture:!0,passive:!0})}function te(e,t,n){const u=[...t.values()].filter(o=>o.targets.some(s=>s.startsWith(e+".")));return{wrap(o,s){const f=`${e}.${o}`,a=u.filter(i=>i.targets.includes(f));return a.length===0?(...i)=>{try{return s(...i)}catch(p){return Promise.reject(p)}}:(...i)=>{let p=i;for(const c of a){const l=c.module.parameters;if(l)try{p=l(p)}catch{return Promise.reject({code:"transform_error",id:c.id,scope:e,message:"parameters transform failed"})}}let h;try{h=s(...p)}catch(c){h=Promise.reject(c)}return h.then(c=>{for(let l=a.length-1;l>=0;l--){const m=a[l],d=m.module.returns;if(d)try{c=d(c)}catch{return n({id:m.id,scope:e,leg:"returns"}),c}}return c},c=>{for(let l=a.length-1;l>=0;l--){const m=a[l],d=m.module.throws;if(d)try{c=d(c)}catch{return n({id:m.id,scope:e,leg:"throws"}),Promise.reject(c)}}return Promise.reject(c)})}}}}function ne(e,t,n,u=()=>{}){const o=new Set(e.changes??[]),s=new Map;for(const f of o){const a=t[f];a&&s.set(f,a)}return{contract:e.contract,changes:o,flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:s,shellOrigin:n.shellOrigin,mount:n.mount,pipe:f=>te(f,s,u)}}(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let u=0;for(let o=0;o<n.length;o++){const s=n[o];try{e(t,s,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[s]}catch{}try{e(t,s,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[s]=="function"&&u++}if(u&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:u},"*")}catch{}})();const re=1e4,oe=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function se(e){for(const t of oe)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}const R=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities??{}}),A=window.__FRAME_PREAMBLE?.transforms,k=window.__FRAME_PREAMBLE?.comments,C=/^[\w.-]+\.js$/,ie=/^[a-z][a-z0-9_-]{0,63}$/;let F=null,v=null;function N(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}let I=!1;function H(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,I=!0):I&&(delete t.dataset.theme,t.style.colorScheme="",I=!1)}const E={mcp:{watchTool:{handlerArg:3}}},P=new Map;function ae(e,t){const n=P.get(e);if(!n)return;Object.assign(n.impl,t),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const u=n.queue;n.queue=[];for(const o of u){const s=t[o.method];if(s)if(E[e]?.[o.method])try{o.resolve(s(...o.args))}catch{O(o,E[e][o.method].handlerArg,{code:"transform_error",message:`${e}.${o.method} rejected its arguments`})}else s(...o.args).then(o.resolve,o.reject);else{const f={code:"capability_removed",message:`${e}.${o.method} is not in this runtime`},a=E[e]?.[o.method];if(a){O(o,a.handlerArg,f);continue}o.reject(f)}}}function $(e,t){const n=P.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t);const u=n.queue;n.queue=[];for(const o of u){const s=E[e]?.[o.method];if(s){O(o,s.handlerArg,t);continue}o.reject(t)}}function O(e,t,n){if(e.syncState?.dead)return;const u=e.args[t];typeof u=="function"&&queueMicrotask(()=>{if(!e.syncState?.dead)try{u({type:"error",error:n})}catch(o){Y(o)}})}const q=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(q&&q.writable===!1)){Z(),ee();const e=q?.value??{};N(window,"claude",e);const t=i=>{const p={impl:Object.create(null),queue:[]};P.set(i,p);const h=new Proxy(p.impl,{get:(c,l)=>{if(typeof l!="string"||l==="then"||l==="toJSON"||l==="valueOf")return;if(l==="toString")return Object.prototype.toString;const m=E[i]?.[l];return m?(...d)=>{if(typeof d[m.handlerArg]!="function")throw new TypeError(`${i}.${l} requires a handler function`);const g=c[l];if(g)return g(...d);if(c.__settled){const _={dead:!1},S={args:[...d],syncState:_};return c.__settled().catch(j=>O(S,m.handlerArg,j)),()=>{_.dead=!0}}let y=null;const w={dead:!1};return p.queue.push({method:l,args:d,resolve:_=>{y=typeof _=="function"?_:null,w.dead&&y?.()},reject:()=>{},syncState:w}),()=>{w.dead=!0,y?.()}}:(...d)=>{const g=c[l]??c.__settled;return g?g(...d):new Promise((y,w)=>{p.queue.push({method:l,args:d,resolve:y,reject:w})})}},set:()=>!1});N(e,i,h)};for(const i of Object.keys(R)){if(e[i]!==void 0){N(e,i,e[i]);continue}t(i)}let n=null,u=null,o=0;const s=i=>{i.source!==parent||!se(i.origin)||G(i.data)&&(n=i.data.__frame_init,v=i.origin,removeEventListener("message",s),clearTimeout(o),u?.())};addEventListener("message",s),parent.postMessage({__frame_connect:!0},"*");const f=new Promise(i=>{u=i,o=setTimeout(()=>{removeEventListener("message",s),i()},re)}),a=document.readyState==="loading"?new Promise(i=>document.addEventListener("DOMContentLoaded",()=>i(),{once:!0})):Promise.resolve();f.then(async()=>{if(!n||!v){for(const r of P.keys())$(r,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}H(n.theme);const i=v;let p=!1;addEventListener("message",r=>{if(r.source!==parent||r.origin!==i)return;V(r.data)&&H(r.data.__frame_theme.theme);const b=r.data?.__fc_mode;b&&typeof b=="object"&&!p&&k&&C.test(k)&&(p=!0,h(k).then(L=>L.install?.(i,b.on===!0)).catch(()=>{}))});const h=r=>x(()=>import("/_runtime/"+r),void 0),c=Object.keys(n.capabilities??{});for(const r of c)Object.hasOwn(R,r)||ie.test(r)&&e[r]===void 0&&(t(r),$(r,{code:"capability_disabled",message:"capability not in this runtime generation"}));const l=c.filter(r=>Object.hasOwn(R,r)).map(r=>[r,R[r]]).filter(r=>typeof r[1]=="string"&&C.test(r[1])),[m,...d]=await Promise.allSettled([A&&C.test(A)?h(A):Promise.resolve({}),...l.map(([,r])=>h(r))]),g=v;F=ne(n,m.status==="fulfilled"&&m.value?.TRANSFORMS||{},{shellOrigin:g,mount:ae},r=>parent.postMessage({__frame_cap_telemetry:r},g));const y=r=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:r}},g),w=F;d.forEach((r,b)=>{const L=l[b][0];if(r.status!=="fulfilled"){y(L);return}try{r.value?.install?.(w)}catch{y(L)}});for(const[r,b]of P)b.queue.length===0&&Object.keys(b.impl).length>0||$(r,{code:c.includes(r)?"capability_disabled":"not_granted",message:"capability not available in this session"});await a,parent.postMessage({__frame_ready:!0},v);let _=-1,S=0;const j=()=>{S=0;const r=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);r!==_&&(_=r,parent.postMessage({__frame_size:!0,h:r},g))},M=()=>{S||(S=setTimeout(j,200))},W=new ResizeObserver(M);W.observe(document.documentElement),document.body&&W.observe(document.body),document.addEventListener("load",M,!0),document.fonts?.ready.then(M,()=>{}),addEventListener("beforeprint",()=>{_=-1,j()}),M(),addEventListener("message",r=>{r.source!==parent||r.origin!==g||J(r.data)&&(_=-1,M())})})}})();</script><!-- /frame-runtime --><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<style>
+:root{
+  --bg:#f5f6f8;
+  --surface:#ffffff;
+  --border:#dde1e7;
+  --ink:#171c26;
+  --ink-soft:#5b6472;
+  --accent:#b8511f;
+  --accent-ink:#7a370f;
+  --accent-soft:#f4e4d8;
+  --accent2:#1f7a5c;
+  --accent2-soft:#dcf0ea;
+  --accent3:#6d4aad;
+  --accent3-soft:#ece5f7;
+  --danger:#a4342a;
+  --danger-soft:#f7e2df;
+  --danger-ink:#7a2019;
+  --code-bg:#12161f;
+  --code-ink:#e7e9ee;
+  --code-border:#262c38;
+  --code-dim:#8891a3;
+  --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0f1218; --surface:#161b23; --border:#2a2f3a;
+    --ink:#e8e9ec; --ink-soft:#a3abb8;
+    --accent:#e2823a; --accent-ink:#f6b184; --accent-soft:#3a2718;
+    --accent2:#4cb894; --accent2-soft:#12332a;
+    --accent3:#a98ee0; --accent3-soft:#241b38;
+    --danger:#e0685c; --danger-soft:#3a1e1b; --danger-ink:#f2a89e;
+    --code-bg:#0b0d12; --code-ink:#dfe2e8; --code-border:#252a35; --code-dim:#6b7385;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1218; --surface:#161b23; --border:#2a2f3a;
+  --ink:#e8e9ec; --ink-soft:#a3abb8;
+  --accent:#e2823a; --accent-ink:#f6b184; --accent-soft:#3a2718;
+  --accent2:#4cb894; --accent2-soft:#12332a;
+  --accent3:#a98ee0; --accent3-soft:#241b38;
+  --danger:#e0685c; --danger-soft:#3a1e1b; --danger-ink:#f2a89e;
+  --code-bg:#0b0d12; --code-ink:#dfe2e8; --code-border:#252a35; --code-dim:#6b7385;
+}
+:root[data-theme="light"]{
+  --bg:#f5f6f8; --surface:#ffffff; --border:#dde1e7;
+  --ink:#171c26; --ink-soft:#5b6472;
+  --accent:#b8511f; --accent-ink:#7a370f; --accent-soft:#f4e4d8;
+  --accent2:#1f7a5c; --accent2-soft:#dcf0ea;
+  --accent3:#6d4aad; --accent3-soft:#ece5f7;
+  --danger:#a4342a; --danger-soft:#f7e2df; --danger-ink:#7a2019;
+  --code-bg:#12161f; --code-ink:#e7e9ee; --code-border:#262c38; --code-dim:#8891a3;
+}
+*{box-sizing:border-box;}
+html,body{background:var(--bg);}
+body{
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.7;
+  margin:0;
+  padding:0 20px 100px;
+}
+.wrap{max-width:860px;margin:0 auto;}
+::selection{background:var(--accent-soft);}
+
+.masthead{padding:56px 0 28px;border-bottom:1px solid var(--border);}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+}
+h1.title{
+  font-size:2.3rem;
+  line-height:1.15;
+  margin:.5em 0 .3em;
+  text-wrap:balance;
+  letter-spacing:-.01em;
+}
+.dek{color:var(--ink-soft);font-size:1.08rem;max-width:64ch;text-wrap:pretty;}
+.meta{margin-top:22px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);display:flex;gap:18px;flex-wrap:wrap;}
+.meta b{color:var(--ink);}
+
+nav.toc{
+  margin:32px 0 12px;
+  padding:18px 20px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+nav.toc .toc-title{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;}
+nav.toc ol{margin:0;padding:0;list-style:none;columns:2;column-gap:28px;}
+nav.toc li{break-inside:avoid;margin-bottom:7px;font-size:14.5px;}
+nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;}
+nav.toc a:hover{border-bottom-color:var(--accent);}
+nav.toc .n{font-family:var(--mono);color:var(--accent);margin-right:6px;}
+@media (max-width:640px){nav.toc ol{columns:1;}}
+
+.part-divider{
+  margin:64px 0 28px;
+  padding:22px 0 18px;
+  border-top:2px solid var(--ink);
+  display:flex;
+  align-items:baseline;
+  gap:20px;
+}
+.part-num{font-family:var(--mono);font-size:2.4rem;font-weight:600;color:var(--accent);line-height:1;}
+.part-heading h2{margin:0 0 4px;font-size:1.55rem;letter-spacing:-.01em;text-wrap:balance;}
+.part-heading p{margin:0;color:var(--ink-soft);font-size:.98rem;max-width:56ch;}
+
+h3{font-size:1.2rem;margin:2em 0 .5em;letter-spacing:-.005em;}
+h4{font-family:var(--mono);font-size:.92rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin:1.8em 0 .6em;}
+p{max-width:74ch;}
+ul,ol{max-width:74ch;}
+li{margin-bottom:.35em;}
+strong{color:var(--ink);}
+code{
+  font-family:var(--mono);
+  font-size:.88em;
+  background:var(--accent-soft);
+  color:var(--accent-ink);
+  padding:.1em .35em;
+  border-radius:4px;
+}
+a{color:var(--accent);}
+
+.codeblock{
+  background:var(--code-bg);
+  border:1px solid var(--code-border);
+  border-radius:10px;
+  margin:1.2em 0;
+  overflow:hidden;
+}
+.codeblock .tab{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--code-dim);
+  padding:8px 14px;
+  border-bottom:1px solid var(--code-border);
+}
+.codeblock pre{
+  margin:0;
+  padding:16px 18px;
+  overflow-x:auto;
+  font-family:var(--mono);
+  font-size:.86rem;
+  line-height:1.6;
+  color:var(--code-ink);
+}
+.codeblock code{background:none;color:inherit;padding:0;font-size:1em;}
+
+.callout{
+  border-left:3px solid var(--accent);
+  background:var(--accent-soft);
+  border-radius:0 8px 8px 0;
+  padding:14px 18px;
+  margin:1.3em 0;
+  max-width:74ch;
+}
+.callout .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:6px;font-weight:700;}
+.callout p:last-child{margin-bottom:0;}
+.callout.danger{border-left-color:var(--danger);background:var(--danger-soft);}
+.callout.danger .lbl{color:var(--danger-ink);}
+.callout.verify{border-left-color:var(--accent2);background:var(--accent2-soft);}
+.callout.verify .lbl{color:var(--accent2);}
+
+.incident{
+  background:var(--code-bg);
+  border:1px solid var(--danger);
+  border-radius:10px;
+  padding:0;
+  margin:1.4em 0;
+  overflow:hidden;
+}
+.incident .head{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--danger-ink);background:var(--danger-soft);padding:8px 14px;border-bottom:1px solid var(--danger);
+}
+.incident .body{padding:16px 20px;color:var(--code-ink);}
+.incident .body p{color:var(--code-ink);max-width:none;}
+.incident .step{display:flex;gap:12px;margin:0 0 14px;}
+.incident .step .idx{font-family:var(--mono);color:var(--danger-ink);flex:0 0 auto;font-weight:700;}
+.incident .step .txt{max-width:70ch;}
+.incident .step pre{margin:.4em 0 0;font-family:var(--mono);font-size:.84rem;background:#000a;padding:10px 12px;border-radius:6px;overflow-x:auto;color:var(--code-ink);}
+
+table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:.92rem;}
+.tablewrap{overflow-x:auto;margin:1.2em 0;}
+.tablewrap table{margin:0;min-width:560px;}
+th,td{border:1px solid var(--border);padding:8px 12px;text-align:left;vertical-align:top;}
+th{background:var(--surface);font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);}
+td code{white-space:nowrap;}
+tbody tr:nth-child(even){background:var(--surface);}
+.num{font-variant-numeric:tabular-nums;}
+
+.checklist{list-style:none;padding:0;margin:1em 0;}
+.checklist li{
+  display:flex;gap:10px;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:12px 14px;margin-bottom:8px;max-width:none;
+}
+.checklist input{margin-top:3px;width:16px;height:16px;accent-color:var(--accent);flex:0 0 auto;}
+.checklist .part-tag{font-family:var(--mono);font-size:11px;color:var(--accent);margin-right:6px;}
+
+.badge{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:5px;font-weight:700;}
+.badge.prom{background:var(--accent-soft);color:var(--accent-ink);}
+.badge.loki{background:var(--accent2-soft);color:var(--accent2);}
+.badge.otel{background:var(--accent3-soft);color:var(--accent3);}
+
+hr.rule{border:none;border-top:1px solid var(--border);margin:3em 0;}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--border);color:var(--ink-soft);font-size:.85rem;font-family:var(--mono);}
+</style>
+
+<div class="wrap">
+
+<div class="masthead">
+  <div class="eyebrow">Field Guide · SRE / Observability</div>
+  <h1 class="title">Observability From Zero: Prometheus, Loki, and OpenTelemetry — Ground Truth to Kubernetes</h1>
+  <p class="dek">A hands-on, defend-it-in-an-interview guide to building an observability stack from nothing — the pull model, the TSDB, PromQL's sharp edges, real Docker networking failures, bridging a metrics-blind CI pipeline into Prometheus, and the Kubernetes/Loki/OpenTelemetry variants of every pattern.</p>
+  <div class="meta">
+    <span><b>7 parts</b></span>
+    <span>Prometheus · Docker · CI/CD · Kubernetes · Loki · OpenTelemetry</span>
+    <span>Grounded in a real ECS → S3 → exporter → Prometheus → Grafana pipeline</span>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Contents</div>
+  <ol>
+    <li><span class="n">01</span><a href="#part1">Prometheus fundamentals</a></li>
+    <li><span class="n">02</span><a href="#part2">Building Prometheus from scratch</a></li>
+    <li><span class="n">03</span><a href="#part3">Bridging CI/CD into Prometheus</a></li>
+    <li><span class="n">04</span><a href="#part4">Know-by-heart reference</a></li>
+    <li><span class="n">05</span><a href="#part5">The same thing in Kubernetes</a></li>
+    <li><span class="n">06</span><a href="#part6">Loki from scratch (logs)</a></li>
+    <li><span class="n">07</span><a href="#part7">OpenTelemetry from scratch</a></li>
+    <li><span class="n">—</span><a href="#practice">This week's hands-on checklist</a></li>
+  </ol>
+</nav>
+
+<!-- ============ PART 1 ============ -->
+<section id="part1">
+<div class="part-divider">
+  <div class="part-num">01</div>
+  <div class="part-heading">
+    <h2>Prometheus Fundamentals</h2>
+    <p>What you must understand before touching a keyboard — the model, the storage engine, the metric types, and the PromQL rules that will fail you silently if you don't know them.</p>
+  </div>
+</div>
+
+<h3>Pull vs. push, and why it's an operational decision, not a taste preference</h3>
+
+<p>Prometheus is a <strong>pull-based</strong> monitoring system. It does not wait for applications to send it data. Instead, on a fixed interval, Prometheus reaches out over HTTP to each configured <strong>target</strong> and issues a plain <code>GET /metrics</code> request. The target responds with a flat text document — the Prometheus exposition format — listing every metric it currently knows about. Prometheus parses that response, timestamps every line with "now", and writes the samples to its local storage.</p>
+
+<p>Contrast that with a <strong>push-based</strong> system (StatsD, Graphite's classic carbon-cache, or CloudWatch custom metrics): the application itself decides when to emit a data point and fires it at the collector, usually over UDP or a lightweight TCP protocol, with no acknowledgement that anyone received it.</p>
+
+<p>This is not a stylistic difference. It changes what failures look like and what you can prove:</p>
+
+<ul>
+<li><strong>Target health becomes a first-class signal.</strong> Every scrape attempt produces a synthetic metric, <code>up{job="...", instance="..."}</code>, set to <code>1</code> if the scrape succeeded and <code>0</code> if it didn't (connection refused, timeout, non-200 response). With push, if an app stops sending data, you cannot distinguish "the app is fine and has nothing new to report" from "the app is dead and can no longer push." Silence is ambiguous in push; in pull, silence is itself a scrape failure you can alert on directly.</li>
+<li><strong>Configuration lives in one place.</strong> Prometheus's own config file is the single source of truth for what is being monitored and how often. You don't need to configure hundreds of application instances with "here is the collector's address" — you tell Prometheus where they are, once.</li>
+<li><strong>No thundering herd.</strong> Every pushing client deciding independently when to send data means bursts and contention at the collector. Prometheus staggers its own scrape schedule internally across targets, so load on both sides is predictable.</li>
+<li><strong>The trade-off is reachability.</strong> Pull only works if Prometheus can open a connection to the target. This is trivial inside a stable network (a VM, a Kubernetes cluster, a Docker network) and becomes a real architectural problem the moment the "target" is short-lived or unreachable — a Lambda invocation, a CI runner, an ECS task that dies seconds after starting. That exact problem is the entire subject of Part 3.</li>
+</ul>
+
+<div class="callout">
+<div class="lbl">Why this matters in an interview</div>
+<p>If asked "why does Prometheus use pull," the wrong answer is "it's simpler." The right answer is: pull makes target liveness an explicit, queryable signal (<code>up</code>), centralizes configuration, and avoids collector overload from uncoordinated clients — at the cost of requiring network reachability from Prometheus to every target, which is precisely why ephemeral compute needs an exporter or Pushgateway pattern instead of being scraped directly.</p>
+</div>
+
+<h3>Core architecture: TSDB, WAL, retention, jobs, and targets</h3>
+
+<p>Prometheus stores everything in its own purpose-built time-series database (TSDB) — there is no external database dependency for core functionality. Internally:</p>
+
+<ul>
+<li><strong>The head block</strong> is the most recent, still-mutable chunk of data, held in memory for fast writes and queries. Every scrape appends to it.</li>
+<li><strong>The WAL (write-ahead log)</strong> is written to disk <em>before</em> a sample is considered durable in memory. If Prometheus crashes, it replays the WAL on startup to reconstruct the in-memory head block — this is what prevents a crash from silently losing the last few minutes of scraped data.</li>
+<li><strong>Compaction</strong> periodically flushes the head block into immutable, on-disk blocks (2-hour ranges initially, merged into larger blocks over time). This is why Prometheus disk usage grows in visible chunks rather than smoothly.</li>
+<li><strong>Retention</strong> — controlled by <code>--storage.tsdb.retention.time</code> (default <strong>15 days</strong> if you never set it) and optionally <code>--storage.tsdb.retention.size</code> — determines when old blocks get deleted. Whichever limit is hit first wins.</li>
+</ul>
+
+<p>Two labels are attached to <em>every single sample</em> Prometheus scrapes, and confusing them is a common interview stumble:</p>
+
+<ul>
+<li><strong><code>job</code></strong> — the name you gave the <code>job_name:</code> in <code>scrape_configs</code>. It identifies <em>what kind of thing</em> you're scraping — a logical group, e.g. <code>automation-results-exporter</code>, regardless of how many instances of it exist.</li>
+<li><strong><code>instance</code></strong> — the specific <code>host:port</code> of the individual target that was scraped, e.g. <code>automation-exporter:9091</code>. If you scale a job to 5 replicas, you get one <code>job</code> label shared across 5 distinct <code>instance</code> values.</li>
+</ul>
+
+<p>A <strong>target</strong> is one scrapeable endpoint (one instance). A <strong>job</strong> is the named group of targets serving the same role, discovered via one <code>scrape_configs</code> entry — whether that entry lists targets statically, reads them from a file, or asks Docker/Kubernetes for the current list.</p>
+
+<h3>The four metric types — and the one distinction that actually gets tested</h3>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Type</th><th>Behavior</th><th>Real example</th></tr></thead>
+<tbody>
+<tr><td><strong>Counter</strong></td><td>Monotonically increasing. Only goes up (or resets to 0 on process restart). Never use its raw value — always wrap in <code>rate()</code> or <code>increase()</code>.</td><td><code>automation_tests_total</code>-style running totals; <code>http_requests_total</code></td></tr>
+<tr><td><strong>Gauge</strong></td><td>A value that can go up or down freely. Represents current state.</td><td><code>automation_pass_rate</code>, <code>automation_consecutive_failures</code>, memory usage</td></tr>
+<tr><td><strong>Histogram</strong></td><td>Buckets observations into configurable, cumulative <code>le</code> (less-than-or-equal) buckets, plus a <code>_sum</code> and <code>_count</code>. Quantiles are computed <em>server-side</em>, at query time, and <strong>can be aggregated</strong> across instances.</td><td><code>automation_run_duration_seconds</code> with buckets at 60s, 120s, 180s...</td></tr>
+<tr><td><strong>Summary</strong></td><td>Computes configurable quantiles (p50/p90/p99) <em>client-side</em>, at observation time, and exposes the pre-computed result plus <code>_sum</code>/<code>_count</code>.</td><td>Legacy client libraries' default latency metric</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The distinction that actually matters operationally: a summary's quantiles are computed inside the process being measured, per-instance, and <strong>cannot be meaningfully averaged or re-aggregated across instances</strong> — you cannot average two p99s together and get a correct fleet-wide p99. A histogram, by contrast, exposes raw bucket counts, which <em>can</em> be summed across every instance in a job and then have a quantile computed once over the combined data. Because almost everything you monitor runs on more than one instance, or you at least want the option to scale later, <strong>default to histograms</strong>. Reach for a summary only when you need an exact (not bucket-estimated) per-instance quantile and are certain you will never need to aggregate across instances.</p>
+
+<h3>PromQL fundamentals</h3>
+
+<p>An <strong>instant vector</strong> is a set of time series, each with exactly one sample, at one point in time — what you get from a bare metric name like <code>automation_pass_rate</code>. A <strong>range vector</strong> is a set of time series where each series carries <em>multiple</em> samples over a time window, produced by appending a duration in square brackets: <code>automation_pass_rate[5m]</code>. Range vectors cannot be graphed directly — they exist to be fed into functions like <code>rate()</code>, <code>increase()</code>, or <code>histogram_quantile()</code>'s inner aggregation.</p>
+
+<h4>rate() vs. irate() vs. increase()</h4>
+
+<ul>
+<li><strong><code>rate(x[5m])</code></strong> — average per-second rate of increase over the whole 5-minute window, extrapolated to the window's edges, and it automatically handles counter resets (a restart that drops the counter back to 0). Use this for <strong>alerting and any graph you intend to reason about over minutes-to-hours</strong> — it smooths out noise.</li>
+<li><strong><code>irate(x[5m])</code></strong> — uses <em>only the last two data points</em> inside the window to compute an instantaneous rate. Great for a live, fast-twitch dashboard of a volatile counter, but <strong>never use it for alerting</strong> — a single noisy scrape can trigger or silence an alert that <code>rate()</code> would have kept correctly smoothed.</li>
+<li><strong><code>increase(x[1h])</code></strong> — the total increase over the window (conceptually <code>rate() × window seconds</code>, with the same reset-handling and extrapolation). Use this when you want an absolute count phrased in human terms: "how many failed runs in the last 24 hours," not a per-second rate.</li>
+</ul>
+
+<h4>Aggregation operators</h4>
+
+<p><code>sum()</code>, <code>avg()</code>, <code>max()</code>, <code>min()</code>, <code>count()</code>, and <code>topk(n, ...)</code> collapse multiple series into fewer. <code>by (label1, label2)</code> keeps only the named labels and groups on them (everything else is dropped). <code>without (label1)</code> does the inverse — drop only the named label(s), keep everything else. Both change which labels survive on the resulting series, which is exactly the trap in the next section.</p>
+
+<h4>The histogram_quantile() trap — memorize this</h4>
+
+<p>This is the single most common silent-failure PromQL pattern, and it will not throw an error. It will simply return a wrong (or garbage-looking, or empty) number, with no warning.</p>
+
+<p><code>histogram_quantile()</code> requires its input range vector to be grouped <strong>only by <code>le</code></strong> (plus whatever dimension you deliberately want to keep, like <code>job</code>). If the bucket series still carry a high-cardinality label — say, <code>instance</code>, because you're scraping three replicas of the same job — you get multiple overlapping, independent bucket ladders per <code>le</code> value instead of one clean monotonic ladder, and the quantile interpolation math falls apart silently.</p>
+
+<div class="codeblock">
+<div class="tab">Broken</div>
+<pre><code>histogram_quantile(
+  0.95,
+  rate(http_request_duration_seconds_bucket[5m])
+)</code></pre>
+</div>
+
+<p>If <code>http_request_duration_seconds_bucket</code> is scraped from three pods behind one job, this query is operating on series like:</p>
+
+<div class="codeblock"><pre><code>http_request_duration_seconds_bucket{instance="10.0.0.1:8080", le="0.5"}
+http_request_duration_seconds_bucket{instance="10.0.0.2:8080", le="0.5"}
+http_request_duration_seconds_bucket{instance="10.0.0.3:8080", le="0.5"}</code></pre></div>
+
+<p><code>histogram_quantile()</code> tries to reconstruct one bucket ladder per unique remaining label set, but three different instances is not what it expects for one quantile — you'll get either three separate (meaningless, per-instance) quantiles smeared together, or, worse, an interpolation across a non-monotonic mash of buckets that produces a number that <em>looks</em> plausible but is wrong. No error. No warning. Just a wrong p95 that you will ship into a dashboard and trust.</p>
+
+<div class="codeblock">
+<div class="tab">Fixed</div>
+<pre><code>histogram_quantile(
+  0.95,
+  sum(rate(http_request_duration_seconds_bucket[5m])) by (le)
+)</code></pre>
+</div>
+
+<p>The fix: aggregate away every label except <code>le</code> <em>before</em> handing the result to <code>histogram_quantile()</code>. <code>sum(...) by (le)</code> collapses the three instances' buckets into one true combined ladder, per <code>le</code>, across the whole job — and only then does the quantile math have a single, monotonic, correct bucket ladder to interpolate against. If you want to keep the quantile split by job (multiple jobs sharing a dashboard), add it to the <code>by</code> clause: <code>by (le, job)</code> — but never leave <code>instance</code>, <code>pod</code>, or any other per-replica label in there.</p>
+
+<p>This exact pattern is already correct in this repo's own dashboard query:</p>
+
+<div class="codeblock"><pre><code>histogram_quantile(0.95, rate(automation_run_duration_seconds_bucket[7d]))</code></pre></div>
+
+<p>That specific query happens to be safe today only because the exporter runs as a single instance — there is exactly one <code>instance</code> label value in play, so no aggregation is strictly required. The moment anyone scales the exporter to two replicas for availability, this query silently starts producing wrong numbers unless <code>sum(...) by (le)</code> is added first. Flag this as a landmine, not a bug — it's correct today, fragile tomorrow.</p>
+
+<h3>Service discovery mechanisms</h3>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Mechanism</th><th>How it works</th><th>When to use it</th></tr></thead>
+<tbody>
+<tr><td><code>static_configs</code></td><td>A fixed, hand-written list of <code>host:port</code> targets in <code>prometheus.yml</code>.</td><td>A handful of stable, rarely-changing targets. This is what this repo's own <code>prometheus.yml</code> uses for the single exporter target — appropriate because there is exactly one target and it never moves.</td></tr>
+<tr><td><code>file_sd_configs</code></td><td>Prometheus watches an external JSON/YAML file of targets and automatically reloads when it changes — no Prometheus restart needed.</td><td>Semi-dynamic infrastructure not backed by Docker/Kubernetes APIs — e.g. a provisioning script or inventory tool writes out <code>targets.json</code>.</td></tr>
+<tr><td><code>docker_sd_configs</code></td><td>Prometheus queries the Docker Engine API directly and auto-discovers containers, typically filtered by label.</td><td>Docker Compose / Swarm environments with many containers coming and going, where hand-maintaining <code>static_configs</code> doesn't scale.</td></tr>
+<tr><td><code>kubernetes_sd_configs</code></td><td>Prometheus queries the Kubernetes API for pods, services, or endpoints matching selectors.</td><td>Kubernetes — though in practice you rarely write this by hand; the Prometheus Operator's <code>ServiceMonitor</code>/<code>PodMonitor</code> CRDs generate it for you (see Part 5).</td></tr>
+</tbody>
+</table>
+</div>
+
+</section>
+
+<!-- ============ PART 2 ============ -->
+<section id="part2">
+<div class="part-divider">
+  <div class="part-num">02</div>
+  <div class="part-heading">
+    <h2>Building Prometheus Completely From Scratch</h2>
+    <p>A real <code>docker run</code>, a real <code>prometheus.yml</code>, the exact Docker DNS mechanics that make container-name scraping work — and a full incident narrative for when it doesn't.</p>
+  </div>
+</div>
+
+<h3>Running Prometheus as a standalone container</h3>
+
+<div class="codeblock">
+<div class="tab">bash</div>
+<pre><code>docker network create observability_default
+
+docker run -d \
+  --name prometheus \
+  --network observability_default \
+  -p 9090:9090 \
+  -v prometheus_data:/prometheus \
+  -v "$(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml:ro" \
+  --restart unless-stopped \
+  prom/prometheus:v2.52.0 \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.retention.time=90d \
+  --web.enable-lifecycle</code></pre>
+</div>
+
+<p>Flag by flag, and why each one is there:</p>
+
+<ul>
+<li><code>-d</code> — detached mode; the container runs in the background and <code>docker run</code> returns immediately with the container ID. <strong>This matters for the case study below</strong>: "the command returned successfully" only ever means "the container was created and started," never "the process inside is healthy."</li>
+<li><code>--name prometheus</code> — without an explicit name Docker assigns a random one (<code>affectionate_turing</code>), which is useless for DNS-by-name resolution from other containers. Naming it deliberately is what makes <code>http://prometheus:9090</code> resolvable from anywhere else on the same network.</li>
+<li><code>--network observability_default</code> — attaches the container to a <strong>user-defined</strong> bridge network. This single flag is the difference between name-based resolution working and failing outright — explained in full below.</li>
+<li><code>-p 9090:9090</code> — publishes the container's port 9090 to the host's port 9090. This is what lets you (or Grafana, if Grafana runs outside Docker) reach it via the host's IP. If Grafana is itself a container on the same Docker network, it does <em>not</em> need this published port at all — it can reach <code>prometheus:9090</code> directly over the internal network.</li>
+<li><code>-v prometheus_data:/prometheus</code> — a <strong>named Docker volume</strong> mounted at Prometheus's data directory. Named volumes are managed by Docker, survive <code>docker rm</code> of the container, and avoid host-filesystem permission mismatches (the Prometheus image runs as a non-root UID). Never point this at an arbitrary host path unless you've deliberately matched UID/GID permissions.</li>
+<li><code>-v "$(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml:ro"</code> — a <strong>bind mount</strong>, read-only, of your actual config file from the host into the container. Bind-mounting config (rather than baking it into a custom image) means editing the file on the host and reloading takes effect immediately, with no rebuild.</li>
+<li><code>--config.file=...</code> — tells the Prometheus binary itself where its config lives inside the container. This is a Prometheus CLI flag, not a Docker flag — it must match wherever you mounted the file.</li>
+<li><code>--storage.tsdb.retention.time=90d</code> — overrides the <strong>default of 15 days</strong>. If you never set this flag, Prometheus deletes data older than 15 days regardless of how much disk you have.</li>
+<li><code>--web.enable-lifecycle</code> — turns on the <code>POST /-/reload</code> endpoint, letting you push a config change (<code>curl -X POST http://localhost:9090/-/reload</code>) without restarting the container. Without this flag, the only way to pick up a new <code>prometheus.yml</code> is a full restart, which briefly drops the in-memory head block state and any in-flight scrapes.</li>
+</ul>
+
+<h3>Writing <code>prometheus.yml</code> from scratch</h3>
+
+<div class="codeblock">
+<div class="tab">infra/grafana-server/prometheus.yml</div>
+<pre><code>global:
+  scrape_interval: 60s
+  evaluation_interval: 60s
+
+scrape_configs:
+  - job_name: 'automation-results-exporter'
+    static_configs:
+      - targets: ['automation-exporter:9091']
+    scrape_interval: 60s</code></pre>
+</div>
+
+<ul>
+<li><strong><code>global.scrape_interval</code></strong> — the default cadence applied to every job that doesn't override it. 60s here means "assume nothing changes faster than once a minute," which is correct for this workload — the exporter itself only refreshes from S3 every 60s, so scraping faster would just re-read identical numbers.</li>
+<li><strong><code>global.evaluation_interval</code></strong> — how often Prometheus re-evaluates recording rules and alerting rules (not scraping — a separate clock).</li>
+<li><strong><code>scrape_configs</code></strong> — the list of jobs. Each entry becomes one <code>job</code> label value.</li>
+<li><strong><code>job_name</code></strong> — the literal string that becomes the <code>job</code> label on every sample from this entry.</li>
+<li><strong><code>static_configs.targets</code></strong> — a list of <code>host:port</code> strings. Each one becomes an <code>instance</code> label, and — critically — the <code>host</code> part (<code>automation-exporter</code>) is resolved as a DNS name, not an IP literal, which is exactly where Docker networking enters the picture.</li>
+<li><strong>per-job <code>scrape_interval</code></strong> — overrides the global default for just this job. Here it's redundant with the global value but written explicitly for clarity/future-proofing if the global default ever changes.</li>
+</ul>
+
+<h3>Docker networking in depth: why the network flag isn't optional</h3>
+
+<p>Docker's <strong>default bridge network</strong> (the implicit network every container joins if you don't specify one) does <em>not</em> run a name-resolution service. Containers on it can only reach each other by IP address — there is no DNS server listening for container names.</p>
+
+<p>A <strong>user-defined bridge network</strong> (anything you create with <code>docker network create</code>, or that Docker Compose creates automatically per project) is different: Docker runs an embedded DNS resolver at <code>127.0.0.11</code> inside every container attached to that network, and it resolves other containers' <em>names</em> (and any <code>network_alias</code>) to their current internal IP. This is what makes <code>http://automation-exporter:9091</code> work from inside the Prometheus container — "automation-exporter" is a DNS name that only resolves correctly on that specific network.</p>
+
+<p>The failure mode when a container is <strong>not</strong> on the right network is one of the most common Docker gotchas in production, and it has a distinctive signature:</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Symptom text</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><code>dial tcp: lookup automation-exporter: no such host</code></td><td>Plain DNS failure — the name genuinely doesn't exist anywhere the resolver checked (e.g. no embedded Docker DNS at all, such as on the default bridge network).</td></tr>
+<tr><td><code>dial tcp: lookup prometheus on 127.0.0.11:53: server misbehaving</code></td><td>The request <em>did</em> reach Docker's embedded DNS server (127.0.0.11) but it could not resolve the name — almost always because the querying container is on a <em>different</em> user-defined network than the container it's trying to reach, so the embedded resolver on network A has never heard of a container that only exists on network B.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Diagnosing it live:</p>
+
+<div class="codeblock">
+<div class="tab">bash</div>
+<pre><code># What containers are actually attached to this network?
+docker network inspect observability_default
+
+# What network(s) is this specific container actually on?
+docker inspect prometheus --format '{{json .NetworkSettings.Networks}}'
+
+# Test resolution from inside the container, live
+docker exec prometheus getent hosts automation-exporter
+docker exec prometheus nslookup automation-exporter</code></pre>
+</div>
+
+<h3>Incident: the empty Grafana datasource that turned out to be a private GitHub 404</h3>
+
+<div class="incident">
+<div class="head">Case Study — Production Incident Timeline</div>
+<div class="body">
+
+<div class="step">
+<div class="idx">T+0</div>
+<div class="txt">A team adds a Grafana datasource pointing at <code>http://prometheus:9090</code>. Nobody had actually started a <code>prometheus</code> container on that Docker network yet — the datasource was configured against a name that, at that moment, resolves to nothing.</div>
+</div>
+
+<div class="step">
+<div class="idx">T+2m</div>
+<div class="txt">To fix it fast, someone tries to grab the team's known-good <code>prometheus.yml</code> straight from the private GitHub repo, without cloning or authenticating:</div>
+<pre>curl -o prometheus.yml \
+  https://raw.githubusercontent.com/org/private-infra-repo/main/prometheus.yml</pre>
+</div>
+
+<div class="step">
+<div class="idx">T+2m</div>
+<div class="txt">GitHub's raw-content service, hit without credentials against a <strong>private</strong> repo, returns HTTP <code>404 Not Found</code> — deliberately, not <code>401</code> or <code>403</code>. GitHub does this on purpose: returning a distinct "unauthorized" status for private repos would let an unauthenticated caller confirm the repo <em>exists</em>, which is itself information leakage. A private repo and a nonexistent repo must look identical to someone with no access — both return the same 14-byte body:</div>
+<pre>404: Not Found</pre>
+</div>
+
+<div class="step">
+<div class="idx">T+2m</div>
+<div class="txt"><code>curl</code>, run without <code>-f</code>/<code>--fail</code>, treats this as a success. It got an HTTP response and wrote the body to disk — curl only promotes 4xx/5xx responses to a curl-level error when you explicitly ask it to. So <code>prometheus.yml</code> on disk now contains the literal 14-byte string <code>404: Not Found</code>, and the shell reports exit code <code>0</code>.</div>
+</div>
+
+<div class="step">
+<div class="idx">T+3m</div>
+<div class="txt">The team mounts this file and starts the container:</div>
+<pre>docker run -d --name prometheus --network observability_default \
+  -v "$(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml:ro" \
+  -v prometheus_data:/prometheus -p 9090:9090 \
+  prom/prometheus:v2.52.0 --config.file=/etc/prometheus/prometheus.yml</pre>
+<p>Because <code>docker run -d</code> returns as soon as the container is <em>created and started</em> — not once the process inside is confirmed healthy — this returns a container ID immediately and everyone moves on, assuming success.</p>
+</div>
+
+<div class="step">
+<div class="idx">T+10m</div>
+<div class="txt">Grafana's datasource test still fails, or worse, the Prometheus container is quietly crash-looping in the background. First diagnostic step — check actual container state, not just "did the command exit 0":</div>
+<pre>docker ps -a</pre>
+<pre>CONTAINER ID   IMAGE                      STATUS
+a1b2c3d4e5f6   prom/prometheus:v2.52.0    Restarting (1) 4 seconds ago</pre>
+<p><code>Restarting (1) 4 seconds ago</code> is the tell: the <code>(1)</code> is the process's last exit code, and the fact that "N seconds ago" keeps resetting to a tiny number means the restart policy is relaunching it over and over — a crash loop, not a slow startup.</p>
+</div>
+
+<div class="step">
+<div class="idx">T+11m</div>
+<div class="txt">Second diagnostic step — read what the process itself said before it died:</div>
+<pre>docker logs prometheus</pre>
+<pre>ts=2026-07-10T09:14:02.113Z caller=main.go:589 level=error msg="Error loading config (--config.file=/etc/prometheus/prometheus.yml)"
+err="parsing YAML file /etc/prometheus/prometheus.yml: yaml: unmarshal errors:
+  line 1: cannot unmarshal !!str `404: No...` into config.plain"</pre>
+<p>Prometheus's own YAML parser is telling you, plainly, that line 1 of the config is not a map — it's trying to unmarshal the literal string <code>404: Not Found</code> as if it were the whole config document, and failing.</p>
+</div>
+
+<div class="step">
+<div class="idx">T+12m</div>
+<div class="txt">Confirm the root cause directly by looking at what actually got saved:</div>
+<pre>head -c 100 prometheus.yml
+# 404: Not Found</pre>
+</div>
+
+<div class="step">
+<div class="idx">T+15m</div>
+<div class="txt"><strong>Proper fix — authenticate the request instead of silently accepting an error page as data.</strong> Three equally valid options:</div>
+<pre># Option A: authenticated clone
+git clone https://$GITHUB_TOKEN@github.com/org/private-infra-repo.git
+
+# Option B: curl with a token AND --fail, so a future auth error is loud, not silent
+curl -f -H "Authorization: Bearer $GITHUB_TOKEN" \
+  https://raw.githubusercontent.com/org/private-infra-repo/main/prometheus.yml \
+  -o prometheus.yml
+
+# Option C: the authenticated GitHub CLI, which is already logged in
+gh api repos/org/private-infra-repo/contents/prometheus.yml --jq '.content' \
+  | base64 -d > prometheus.yml</pre>
+<p>Option B's added <code>-f</code> flag is the actual lesson here: it turns "curl silently saves whatever HTTP gave you" into "curl exits non-zero and prints nothing to the file on any 4xx/5xx," which is what should have caught this the first time.</p>
+</div>
+
+<div class="step">
+<div class="idx">T+17m</div>
+<div class="txt">Remount the real config and restart, then re-check container state instead of trusting the command's exit code:</div>
+<pre>docker restart prometheus
+docker ps -a
+# STATUS: Up 8 seconds
+
+docker logs -f prometheus
+# ...level=info msg="Server is ready to receive web requests."</pre>
+</div>
+
+<div class="step">
+<div class="idx">T+18m</div>
+<div class="txt">Verify via Prometheus's own health endpoints — don't just eyeball the log:</div>
+<pre>curl http://localhost:9090/-/healthy
+# Prometheus Server is Healthy.
+curl http://localhost:9090/-/ready
+# Prometheus Server is Ready.</pre>
+</div>
+
+<div class="step">
+<div class="idx">T+19m</div>
+<div class="txt">Verify the Grafana datasource: Connections → Data sources → Prometheus → <strong>Save &amp; test</strong>. It only goes green now because that button itself runs a live query (typically <code>up</code>) against the configured URL — a moment ago that URL had nothing listening behind it at all.</div>
+</div>
+
+<div class="step">
+<div class="idx">T+20m</div>
+<div class="txt">Final live verification — an actual PromQL query returning real target data, not just a green checkmark:</div>
+<pre>curl -s 'http://localhost:9090/api/v1/query?query=up' | jq
+# up{job="prometheus", instance="localhost:9090"} => 1
+# up{job="automation-results-exporter", instance="automation-exporter:9091"} => 1</pre>
+</div>
+
+</div>
+</div>
+
+<div class="callout danger">
+<div class="lbl">The lesson, stated plainly</div>
+<p>Two separate silent successes stacked on top of each other: <code>curl</code> exiting 0 on an HTTP-level 404 (fixed by <code>-f</code>), and <code>docker run -d</code> exiting 0 the instant the container is created, regardless of whether the process inside stays up (fixed by never trusting a launch command's exit code — always follow with <code>docker ps -a</code>). Neither tool lied to you; both simply answered a narrower question than the one you were actually asking.</p>
+</div>
+
+<h3>Production deployment considerations</h3>
+
+<ul>
+<li><strong>Persistent volume for TSDB data</strong> — always a named volume (<code>prometheus_data</code>), never a bind mount to an arbitrary host path, both for lifecycle management and to sidestep permission mismatches against the image's non-root UID.</li>
+<li><strong>Retention sizing</strong> — set <em>both</em> <code>--storage.tsdb.retention.time</code> and, if disk is a hard constraint, <code>--storage.tsdb.retention.size</code> (e.g. <code>20GB</code>). Whichever limit is hit first wins; a busy environment with high-cardinality metrics can fill a disk well before a time-based retention window expires.</li>
+<li><strong>Resource limits</strong> — Prometheus's memory footprint is driven almost entirely by <strong>cardinality</strong> (the number of distinct active time series), not by data volume over time — the mutable head block lives fully in memory. Undersizing memory causes an OOM-kill, which is a far worse failure than a slow query; size generously and monitor <code>prometheus_tsdb_head_series</code> yourself.</li>
+<li><strong>Exposing port 9090</strong> — Prometheus ships with <strong>no built-in authentication or TLS</strong>. Publishing 9090 to the open internet exposes your full metrics history and topology, and lets anyone run arbitrarily expensive queries against it (a cheap DoS vector). Keep it on a private network, behind a reverse proxy with auth, or reachable only via VPN/SSH tunnel.</li>
+<li><strong><code>--web.enable-lifecycle</code></strong> — enables hot config reload via <code>POST /-/reload</code>, but that endpoint is itself unauthenticated by default. Pair it with network-level restriction, not public exposure.</li>
+</ul>
+
+</section>
+
+<!-- ============ PART 3 ============ -->
+<section id="part3">
+<div class="part-divider">
+  <div class="part-num">03</div>
+  <div class="part-heading">
+    <h2>Introducing Prometheus Into a CI/CD-Only Pipeline</h2>
+    <p>The realistic starting point: zero metrics, only pass/fail in the CI tool. Bridging that gap with a custom exporter — walked through against this repo's real, working implementation.</p>
+  </div>
+</div>
+
+<h3>The realistic starting point, and why CI-native pass/fail isn't enough</h3>
+
+<p>Most test automation starts exactly where this repo's shell scripts describe: Jenkins or GitHub Actions runs a suite, and the only artifact of that run is a green or red status inside the CI tool itself. That gets you, at most, "did the last run pass." It does not get you:</p>
+
+<ul>
+<li>Historical trend — "has pass rate degraded over the last two weeks" requires manually paging through build history in the CI UI; there is no query language for it.</li>
+<li>Cross-run comparison at a glance — comparing run N to run N-10 means opening ten separate build pages.</li>
+<li>Alerting on patterns, not single events — "3 consecutive failures" or "no successful run in 25 hours" are patterns across multiple runs, and CI tools generally only notify per-build, not per-pattern.</li>
+<li>A shared, queryable surface other tools (Grafana, an on-call dashboard, an SLO report) can sit on top of.</li>
+</ul>
+
+<h3>What an exporter actually is, architecturally</h3>
+
+<p>An <strong>exporter</strong> is nothing more than a small, standalone HTTP server whose only job is to expose a <code>/metrics</code> endpoint in the Prometheus text format. It is a translation layer: on one side, "however your data actually lives" (a JSON blob in S3, a row in a database, a third-party API); on the other side, "what Prometheus knows how to scrape." It does not need a database of its own — an in-memory registry, refreshed on an interval, is enough.</p>
+
+<h3>Why ECS (and GitHub Actions runners) can't just be scraped directly</h3>
+
+<p>This repo's own production system is the textbook case for why the exporter pattern exists at all. ECS tasks are short-lived: they start, run the test suite, publish results, and terminate. By the time Prometheus's next scrape interval fires, the task that just ran is already gone — there is nothing left at that IP to answer a scrape, and even if there were, ECS IP reuse could hand that same address to a completely unrelated task moments later. <strong>Prometheus cannot scrape a target that no longer exists</strong>, so the target of the scrape has to be something that <em>does</em> persist — a long-running exporter process, separate from the ephemeral test run, whose only job is to remember the last known state and serve it forever until the next update.</p>
+
+<div class="codeblock">
+<div class="tab">infra/grafana-server — actual data flow (README §18.4)</div>
+<pre><code>ECS Task                    S3                          Grafana server (172.31.41.190)
+─────────────────           ──────────────────          ──────────────────────────────
+run tests          →        staging-run-metadata.json
+publish_run_metadata →      validation-run-metadata.json
+ECS dies                    {env}-trend.json
+                                    ↑ reads every 60s
+                            automation-exporter :9091
+                                    ↑ scrapes every 60s
+                            Prometheus :9090
+                                    ↑ queries
+                            Grafana dashboards</code></pre>
+</div>
+
+<h3>Walking through the real exporter</h3>
+
+<p><code>infra/automation-exporter/index.js</code> is a complete, working example of exactly this pattern in ~130 lines. The shape:</p>
+
+<div class="codeblock">
+<div class="tab">infra/automation-exporter/index.js (annotated excerpt)</div>
+<pre><code>const { Registry, Gauge, Histogram } = require('prom-client');
+const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+
+const ENVS = ['staging', 'validation'];
+const reg  = new Registry();
+
+const lastRunStatus = new Gauge({
+  registers: [reg],
+  name: 'automation_last_run_status',
+  help: '1 = passed all gates, 0 = failed',
+  labelNames: ['environment'],
+});
+
+async function refresh(env) {
+  const meta = await s3json(`dashboard/data/${env}-run-metadata.json`);
+  lastRunStatus.set({ environment: env }, meta.status === 'passed' ? 1 : 0);
+  // ...pass rate, consecutive failures, duration histogram, etc.
+}
+
+app.get('/metrics', async (_, res) => {
+  res.set('Content-Type', reg.contentType);
+  res.end(await reg.metrics());
+});
+
+app.listen(9091, () => {
+  const run = () => Promise.allSettled(ENVS.map(refresh));
+  run();
+  setInterval(run, 60_000);   // poll S3 every 60s, independent of when Prometheus scrapes
+});</code></pre>
+</div>
+
+<p>Three design points worth being able to explain out loud:</p>
+
+<ul>
+<li><strong>The poll interval and the scrape interval are decoupled on purpose.</strong> The exporter refreshes its in-memory gauges from S3 every 60 seconds regardless of whether anyone is scraping it right now; Prometheus separately scrapes <code>/metrics</code> every 60 seconds per its own config. Neither side needs to know the other's schedule — the exporter always has <em>some</em> last-known value ready to serve.</li>
+<li><strong>Gauges, not counters, for state.</strong> <code>automation_last_run_status</code>, <code>automation_pass_rate</code>, <code>automation_consecutive_failures</code> are all gauges because they represent current state that can move in either direction between refreshes — a counter would be wrong here since these values are not cumulative.</li>
+<li><strong>Every environment is refreshed unconditionally, every cycle.</strong> <code>Promise.allSettled(ENVS.map(refresh))</code> updates both <code>staging</code> and <code>validation</code> series on every tick, independent of anything else in the system — including, notably, independent of any dashboard-level template variable in Grafana. A metric like <code>automation_last_run_status{environment="staging"}</code> exists and is fresh regardless of what a Grafana dropdown happens to be set to at query time; the exporter has no concept of "which environment is currently selected in someone's browser." That separation of concerns — the exporter owns ground truth per label, Grafana owns how a human currently wants to filter/view it — is exactly why a dashboard-level filtering bug can never make the underlying data itself go stale or wrong.</li>
+</ul>
+
+<h3>Integration path 1: Jenkins-only pipeline</h3>
+
+<div class="codeblock">
+<div class="tab">Jenkinsfile (excerpt)</div>
+<pre><code>stage('Publish results') {
+    steps {
+        sh '''
+          aws s3 cp results/run-metadata.json \
+            s3://ci-artifacts/dashboard/data/staging-run-metadata.json
+        '''
+        archiveArtifacts artifacts: 'results/**', fingerprint: true
+    }
+}</code></pre>
+</div>
+
+<p>The exporter runs as its own long-lived process/container, independent of Jenkins, polling that S3 location; Prometheus's <code>scrape_configs</code> gets one more static target pointed at it. Optionally, install the <strong>Jenkins Prometheus metrics plugin</strong> as well — but be precise about what it actually gives you: it exposes a <code>/prometheus</code> endpoint on the <em>Jenkins controller itself</em>, with metrics about Jenkins' own health (build queue length, executor utilization, job duration) — a completely separate metric surface from your own test-result metrics. One monitors the tool; the other monitors what the tool ran.</p>
+
+<h3>Integration path 2: GitHub Actions-only pipeline</h3>
+
+<p>GitHub Actions runners — hosted or self-hosted-ephemeral — are torn down the moment a job finishes. This is the exact same architectural problem as ECS, wearing a different name: <strong>there is no stable host for Prometheus to scrape, during or after the run.</strong> The fix is the same generalized pattern, not a GitHub-specific trick:</p>
+
+<div class="codeblock">
+<div class="tab">.github/workflows/ci.yml (excerpt)</div>
+<pre><code>- name: Publish results to S3
+  run: |
+    aws s3 cp results/run-metadata.json \
+      s3://ci-artifacts/dashboard/data/staging-run-metadata.json
+
+- name: Upload artifact (GH-native, for humans browsing the run)
+  uses: actions/upload-artifact@v4
+  with:
+    name: test-results
+    path: results/</code></pre>
+</div>
+
+<p>S3 (or any blob store reachable from both the runner and the long-lived exporter host) is preferred over GitHub's own artifact storage here, because GH artifacts are only fetchable via the GitHub API with a token — fine for a human browsing a run, awkward for a persistent exporter polling on an interval outside GitHub's context entirely.</p>
+
+<p>When a true pull model genuinely isn't available — no persistent host exists anywhere to run a polling exporter — the accepted alternative is the <strong>Pushgateway</strong>: a small, stateful HTTP endpoint that the ephemeral job pushes a final metric snapshot to at the end of its run (<code>curl -X POST .../metrics/job/...</code>), and Prometheus scrapes the <em>Pushgateway</em> itself as a normal, stable target. The important caveat: Pushgateway metrics persist until explicitly deleted — if a job stops running and never cleans up, Prometheus will happily keep reporting a stale "success" forever. The S3-plus-polling-exporter pattern used in this repo avoids that trap entirely, because every refresh cycle re-derives state fresh from the latest object in S3 rather than accumulating whatever was last pushed.</p>
+
+<h3>Full deployment walkthrough — day one, nothing exists yet</h3>
+
+<div class="codeblock">
+<div class="tab">bash</div>
+<pre><code># 1. Shared network so containers can resolve each other by name
+docker network create observability_default
+
+# 2. Build and run the exporter
+docker build -t automation-exporter ./infra/automation-exporter
+docker run -d --name automation-exporter \
+  --network observability_default \
+  -e AWS_REGION=us-east-2 \
+  automation-exporter
+
+# 3. Run Prometheus, scrape config already pointing at 'automation-exporter:9091'
+docker run -d --name prometheus \
+  --network observability_default \
+  -p 9090:9090 \
+  -v "$(pwd)/infra/grafana-server/prometheus.yml:/etc/prometheus/prometheus.yml:ro" \
+  -v prometheus_data:/prometheus \
+  prom/prometheus:v2.52.0 --config.file=/etc/prometheus/prometheus.yml
+
+# 4. Verify the exporter is actually emitting data
+curl http://localhost:9091/metrics | grep automation_last_run_status  # if published, else via docker exec
+
+# 5. Verify Prometheus sees it as a healthy target
+curl -s http://localhost:9090/api/v1/targets | jq '.data.activeTargets[] | {job: .labels.job, health}'
+
+# 6. Verify with a live query
+curl -s 'http://localhost:9090/api/v1/query?query=automation_last_run_status' | jq</code></pre>
+</div>
+
+<p>Only after all of that returns real data do you add Grafana as a datasource pointed at <code>http://prometheus:9090</code> and build the first panel — building the dashboard before the data pipeline is verified is exactly how Part 2's incident happened.</p>
+
+</section>
+
+<!-- ============ PART 4 ============ -->
+<section id="part4">
+<div class="part-divider">
+  <div class="part-num">04</div>
+  <div class="part-heading">
+    <h2>Know-By-Heart Reference</h2>
+    <p>No looking anything up. If you can't produce this cold, you're not ready for the interview or the pager.</p>
+  </div>
+</div>
+
+<h4>The docker run command</h4>
+<div class="codeblock"><pre><code>docker run -d --name prometheus \
+  --network observability_default \
+  -p 9090:9090 \
+  -v prometheus_data:/prometheus \
+  -v "$(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml:ro" \
+  prom/prometheus:v2.52.0 \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.retention.time=90d \
+  --web.enable-lifecycle</code></pre></div>
+
+<h4>The four metric types, one line each</h4>
+<ul>
+<li><strong>Counter</strong> — only goes up (or resets to 0 on restart); always wrap in <code>rate()</code>/<code>increase()</code>.</li>
+<li><strong>Gauge</strong> — current value, can move either direction.</li>
+<li><strong>Histogram</strong> — cumulative <code>le</code> buckets + <code>_sum</code>/<code>_count</code>; quantile computed server-side; aggregatable across instances.</li>
+<li><strong>Summary</strong> — pre-computed client-side quantiles + <code>_sum</code>/<code>_count</code>; not aggregatable across instances.</li>
+</ul>
+
+<h4>rate() / irate() / increase()</h4>
+<ul>
+<li><code>rate()</code> — smoothed per-second average over the window; correct for alerting.</li>
+<li><code>irate()</code> — last two points only; fast-twitch dashboards, never alerting.</li>
+<li><code>increase()</code> — total increase over the window, in human-countable units.</li>
+</ul>
+
+<h4>The histogram_quantile pattern</h4>
+<div class="codeblock"><pre><code>histogram_quantile(0.95, sum(rate(x_bucket[5m])) by (le))</code></pre></div>
+<p>The <code>by (le)</code> is mandatory the moment more than one <code>instance</code>/<code>pod</code> shares a job — omitting it doesn't error, it silently returns a wrong quantile.</p>
+
+<h4>Health checks — container and Prometheus itself</h4>
+<div class="codeblock"><pre><code>docker ps -a                       # look for "Restarting (N)"
+docker logs &lt;container&gt;            # look for the parse/connection error
+curl http://localhost:9090/-/healthy
+curl http://localhost:9090/-/ready
+curl -s 'http://localhost:9090/api/v1/query?query=up' | jq</code></pre></div>
+
+<h4>job vs. instance</h4>
+<p><code>job</code> = the logical group name from <code>job_name:</code>. <code>instance</code> = the specific <code>host:port</code> that answered the scrape. One job, many instances.</p>
+
+<h4>Retention</h4>
+<p><code>--storage.tsdb.retention.time</code> — <strong>default 15 days if unset.</strong> Pair with <code>--storage.tsdb.retention.size</code> when disk is the real constraint.</p>
+
+<h4>Failure signatures to recognize on sight</h4>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Text</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>lookup X: no such host</code></td><td>Plain DNS failure — name unresolvable on this network.</td></tr>
+<tr><td><code>lookup X on 127.0.0.11:53: server misbehaving</code></td><td>Docker's embedded DNS got the query but the name isn't on <em>this</em> container's network.</td></tr>
+<tr><td><code>context deadline exceeded</code> / connection timeout</td><td>Name resolved, but nothing answered on that port — firewall, wrong port, or process not listening.</td></tr>
+<tr><td><code>connection refused</code></td><td>Reached the host, but nothing is listening on that port at all.</td></tr>
+<tr><td><code>yaml: unmarshal errors...line N</code></td><td>Config file is not valid YAML for the expected schema — check what's actually on disk, don't assume the download succeeded.</td></tr>
+</tbody>
+</table>
+</div>
+
+</section>
+
+<!-- ============ PART 5 ============ -->
+<section id="part5">
+<div class="part-divider">
+  <div class="part-num">05</div>
+  <div class="part-heading">
+    <h2>The Same Thing in Kubernetes</h2>
+    <p>kube-prometheus-stack, ServiceMonitor CRDs, cluster DNS instead of Docker's DNS trick — same concepts, cluster-native mechanics.</p>
+  </div>
+</div>
+
+<h3>kube-prometheus-stack</h3>
+
+<p>The <code>kube-prometheus-stack</code> Helm chart is the standard way to stand this up in Kubernetes. One <code>helm install</code> gives you:</p>
+
+<ul>
+<li>The <strong>Prometheus Operator</strong> — a controller that watches custom resources and reconciles them into a running Prometheus configuration.</li>
+<li><strong>Prometheus</strong> itself, deployed and managed via the Operator's <code>Prometheus</code> CRD.</li>
+<li><strong>Alertmanager</strong>, similarly managed via an <code>Alertmanager</code> CRD.</li>
+<li><strong>Grafana</strong>, pre-wired with the Prometheus datasource and a set of default cluster dashboards.</li>
+<li><strong>node-exporter</strong>, deployed as a <strong>DaemonSet</strong> — one pod per node, exposing host-level OS metrics (CPU, memory, disk, network) for every node in the cluster.</li>
+<li><strong>kube-state-metrics</strong> — a separate service that watches the Kubernetes API and turns object state (deployment replica counts, pod phase, node conditions) into metrics. This is distinct from node-exporter: node-exporter reports on the host OS, kube-state-metrics reports on the Kubernetes API's view of the world.</li>
+</ul>
+
+<div class="codeblock">
+<div class="tab">bash</div>
+<pre><code>helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install kube-prom-stack prometheus-community/kube-prometheus-stack \
+  --namespace monitoring --create-namespace</code></pre>
+</div>
+
+<h3>ServiceMonitor and PodMonitor</h3>
+
+<p>Instead of hand-editing <code>scrape_configs</code> in a YAML file, you declare a <strong>ServiceMonitor</strong> CRD, and the Operator watches for it, generates the corresponding scrape config internally, and reloads Prometheus automatically:</p>
+
+<div class="codeblock">
+<div class="tab">servicemonitor.yaml</div>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: automation-exporter
+  namespace: automation
+  labels:
+    app: automation-exporter
+spec:
+  selector:
+    app: automation-exporter
+  ports:
+    - name: metrics
+      port: 9091
+      targetPort: 9091
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: automation-exporter
+  namespace: monitoring
+  labels:
+    release: kube-prom-stack
+spec:
+  namespaceSelector:
+    matchNames: ["automation"]
+  selector:
+    matchLabels:
+      app: automation-exporter
+  endpoints:
+    - port: metrics
+      interval: 60s</code></pre>
+</div>
+
+<p>The <code>selector.matchLabels</code> is what replaces a hand-written <code>static_configs.targets</code> entry — it tells the Operator "find every Service with this label, and scrape whatever port is named <code>metrics</code> on it." A <strong>PodMonitor</strong> is the same idea one layer lower: it selects Pods directly by label instead of going through a Service, useful when there's no stable Service object in front of the pods you want scraped.</p>
+
+<h3>Cluster DNS replaces the Docker network trick</h3>
+
+<p>Kubernetes' built-in DNS (CoreDNS) resolves <code>&lt;service&gt;.&lt;namespace&gt;.svc.cluster.local</code> to a Service's ClusterIP — or, for headless services, directly to the IPs of Ready pods. This is conceptually the exact same idea as Docker's embedded DNS at <code>127.0.0.11</code> resolving container names on a user-defined network: name-based service discovery instead of hardcoded IPs. The Kubernetes version is cluster-wide by default and integrates with pod readiness — DNS/Endpoints only ever include pods that have passed their readiness probe, so a resolvable name is also an implicit "this pod claims to be ready" signal, which Docker's plain container-name DNS does not give you.</p>
+
+<h3>Adapting the CI exporter to Kubernetes</h3>
+
+<p>The same <code>infra/automation-exporter</code> image, unchanged, becomes a <strong>Deployment</strong> (one replica is fine — it's stateless, poll-and-serve) fronted by a <strong>Service</strong>, with a <strong>ServiceMonitor</strong> pointed at it, exactly as shown above. Nothing about the exporter's own code changes; only how it's discovered changes.</p>
+
+<h3>Key operational differences from bare Docker</h3>
+
+<ul>
+<li><strong>Resource requests/limits are mandatory citizens, not an afterthought.</strong> The scheduler needs <code>requests</code> to place pods sensibly across nodes; <code>limits</code> prevent one noisy component from starving everything else sharing a node. Prometheus especially needs a generous, deliberately-chosen memory limit given how directly cardinality drives its memory footprint.</li>
+<li><strong>PersistentVolumeClaims</strong> replace the named Docker volume — same durability goal (survive pod rescheduling), backed by whatever StorageClass the cluster provides, with the same retention/size planning concerns as before.</li>
+<li><strong>Config reload is no longer "edit the bind-mounted file and hit <code>/-/reload</code>."</strong> Config lives in a ConfigMap (or is generated wholesale by the Operator from your CRDs), and propagation to the running Prometheus happens either via a small reloader sidecar container that watches the mounted ConfigMap for changes and calls <code>/-/reload</code> itself, or — more commonly with the Operator — full reconciliation: any change to a <code>ServiceMonitor</code>/<code>Prometheus</code> CRD triggers the Operator to regenerate the entire config and push a reload automatically. You essentially never hand-edit <code>prometheus.yml</code> directly in this model.</li>
+</ul>
+
+</section>
+
+<!-- ============ PART 6 ============ -->
+<section id="part6">
+<div class="part-divider">
+  <div class="part-num">06</div>
+  <div class="part-heading">
+    <h2>Standing Up Loki From Scratch <span class="badge loki">Logs</span></h2>
+    <p>Index labels, not text — the same cost trade-off Prometheus makes for metrics, applied to logs. LogQL, Promtail, and the Explore correlation workflow.</p>
+  </div>
+</div>
+
+<h3>What Loki deliberately does differently</h3>
+
+<p>Loki, from Grafana Labs, indexes <strong>only labels and metadata</strong> — the same small set of key-value pairs Prometheus attaches to metrics (<code>job</code>, <code>namespace</code>, <code>pod</code>, <code>container</code>) — and stores the actual log line content as compressed, unindexed chunks. This is a deliberate cost trade-off, not a limitation someone forgot to fix: a full-text index (what Elasticsearch or Splunk builds) is expensive to store and expensive to keep up to date; a label-only index is cheap, because the index stays small regardless of how much log volume flows through. The cost is that ad-hoc full-text search is slower — Loki first narrows to the matching label set cheaply, <em>then</em> greps the actual content of just those matched streams at query time, rather than having a pre-built inverted index over every word ever logged.</p>
+
+<h3>LogQL vs. PromQL, side by side</h3>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Goal</th><th>PromQL</th><th>LogQL</th></tr></thead>
+<tbody>
+<tr><td>Select a stream/series</td><td><code>automation_pass_rate{environment="staging"}</code></td><td><code>{job="automation-exporter", environment="staging"}</code></td></tr>
+<tr><td>Filter content</td><td>n/a — metrics have no body to filter</td><td><code>{job="automation-exporter"} |= "ERROR"</code></td></tr>
+<tr><td>Rate over a window</td><td><code>rate(automation_tests_total[5m])</code></td><td><code>rate({job="automation-exporter"} |= "ERROR" [5m])</code></td></tr>
+<tr><td>Aggregate</td><td><code>sum(rate(x[5m])) by (le)</code></td><td><code>sum(rate({job="automation-exporter"} |= "ERROR" [5m])) by (job)</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The syntax is deliberately similar on purpose: LogQL's range-vector-and-<code>rate()</code> mental model is copied directly from PromQL, so once you know one, the other is mostly "how do I select the right stream" rather than a whole new query language.</p>
+
+<h3>Minimal from-scratch deployment</h3>
+
+<div class="codeblock">
+<div class="tab">loki-config.yaml</div>
+<pre><code>auth_enabled: false
+
+server:
+  http_listen_port: 3100
+
+common:
+  path_prefix: /loki
+  storage:
+    filesystem:
+      chunks_directory: /loki/chunks
+      rules_directory: /loki/rules
+  replication_factor: 1
+  ring:
+    kvstore:
+      store: inmemory
+
+schema_config:
+  configs:
+    - from: 2024-01-01
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h</code></pre>
+</div>
+
+<ul>
+<li><code>auth_enabled: false</code> — single-tenant mode; fine for a self-hosted single-team deployment.</li>
+<li><code>common.storage.filesystem</code> — stores chunks on local disk, appropriate for a from-scratch/local setup; swap for object storage (S3/GCS) in production.</li>
+<li><code>schema_config</code> — defines the index format (<code>tsdb</code>) and how often index files roll over (<code>period: 24h</code>).</li>
+</ul>
+
+<div class="codeblock">
+<div class="tab">bash</div>
+<pre><code>docker network create observability_default
+
+docker run -d --name loki \
+  --network observability_default \
+  -p 3100:3100 \
+  -v "$(pwd)/loki-config.yaml:/etc/loki/local-config.yaml:ro" \
+  grafana/loki:3.0.0 -config.file=/etc/loki/local-config.yaml</code></pre>
+</div>
+
+<p><strong>Promtail</strong> is the log-shipping agent — it tails files (or discovers containers) and pushes matching lines to Loki, attaching labels along the way:</p>
+
+<div class="codeblock">
+<div class="tab">promtail-config.yaml</div>
+<pre><code>server:
+  http_listen_port: 9080
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: automation-exporter
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: automation-exporter
+          __path__: /var/log/automation-exporter/*.log</code></pre>
+</div>
+
+<p><code>positions.yaml</code> tracks the last-read byte offset per file, so a Promtail restart doesn't re-ship (and duplicate) everything it already sent. <code>__path__</code> is the glob Promtail tails; every line it reads gets the static labels attached (<code>job=automation-exporter</code>) before being pushed to Loki.</p>
+
+<h3>Connecting to Grafana — the metric-to-log correlation workflow</h3>
+
+<p>Add Loki as a datasource pointed at <code>http://loki:3100</code>. The payoff is the <strong>Explore</strong> split-view workflow: you notice a spike in a Prometheus panel — say, <code>automation_failure_rate</code> jumping at 14:32 — you switch the second Explore pane to the Loki datasource, filter by the same label (<code>{job="automation-exporter"}</code>), and jump to that exact timestamp. The metric told you <strong>that</strong> and <strong>when</strong> something broke; the logs at that same second tell you <strong>why</strong>.</p>
+
+<h3>Kubernetes variant</h3>
+
+<p>Loki ships as a Helm chart (<code>grafana/loki</code> or the simpler <code>loki-stack</code>), and Promtail runs as a <strong>DaemonSet</strong> — one pod per node, reading <code>/var/log/pods/*</code>, which the kubelet already writes every container's stdout/stderr to. The chart's default Promtail config ships with Kubernetes service-discovery relabeling rules already wired up, so pod logs are automatically labeled with <code>namespace</code>, <code>pod</code>, <code>container</code>, and <code>node</code> — the same discovery mechanism (and the same labels) that node-exporter and kube-state-metrics rely on, just applied to log shipping instead of metric scraping.</p>
+
+</section>
+
+<!-- ============ PART 7 ============ -->
+<section id="part7">
+<div class="part-divider">
+  <div class="part-num">07</div>
+  <div class="part-heading">
+    <h2>OpenTelemetry <span class="badge otel">Traces + Metrics + Logs</span></h2>
+    <p>A vendor-neutral instrumentation standard, not a Prometheus replacement — and the one tool that answers "where exactly did the time go on this one request."</p>
+  </div>
+</div>
+
+<h3>What OpenTelemetry actually is</h3>
+
+<p>OpenTelemetry (OTel) is a CNCF specification, plus SDKs and a Collector, for producing and moving <strong>traces, metrics, and logs</strong> in a vendor-neutral format. It is not a storage backend and not a replacement for Prometheus — it's the instrumentation and pipeline layer <em>in front of</em> whichever backend actually stores and queries the data (Tempo for traces, Prometheus/Mimir for metrics, Loki for logs).</p>
+
+<h3>The OTel Collector: receivers, processors, exporters</h3>
+
+<p>The Collector is a configurable pipeline with three kinds of components:</p>
+
+<ul>
+<li><strong>Receivers</strong> — ingest data. The <code>otlp</code> receiver accepts OpenTelemetry's own wire protocol over gRPC and/or HTTP.</li>
+<li><strong>Processors</strong> — transform or filter data in flight. <code>batch</code> groups spans/metrics together before export for efficiency; <code>memory_limiter</code> protects the Collector itself from OOMing under load.</li>
+<li><strong>Exporters</strong> — send data onward. The <code>prometheus</code> exporter exposes an in-process <code>/metrics</code> endpoint for Prometheus to scrape (push-to-pull translation); the <code>prometheusremotewrite</code> exporter instead pushes directly to a remote-write-compatible backend; the <code>otlp</code> exporter forwards traces onward to a backend like Tempo.</li>
+</ul>
+
+<p>This makes the Collector a genuine <strong>translation and aggregation layer</strong>: applications push OTLP data to it (metrics included), and it can turn around and expose that same data in a shape Prometheus's pull model expects — bridging push-instrumented applications into a pull-based metrics backend without changing how Prometheus itself works.</p>
+
+<h3>From-scratch deployment</h3>
+
+<div class="codeblock">
+<div class="tab">otel-collector-config.yaml</div>
+<pre><code>receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch: {}
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+
+exporters:
+  prometheus:
+    endpoint: 0.0.0.0:8889
+  otlp/tempo:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [prometheus]
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlp/tempo]</code></pre>
+</div>
+
+<div class="codeblock">
+<div class="tab">bash</div>
+<pre><code>docker run -d --name otel-collector \
+  --network observability_default \
+  -p 4317:4317 -p 4318:4318 -p 8889:8889 \
+  -v "$(pwd)/otel-collector-config.yaml:/etc/otelcol/config.yaml:ro" \
+  otel/opentelemetry-collector-contrib:0.103.0 \
+  --config /etc/otelcol/config.yaml</code></pre>
+</div>
+
+<p>This repo already has a working, minimal instrumented client for exactly this pipeline — <code>otel-init.js</code> and <code>otelTestSpan.ts</code>, wired via <code>NODE_OPTIONS="--require /app/otel-init.js"</code> for auto-instrumentation, exporting OTLP HTTP to a Grafana Agent in front of Tempo. It calls <code>span.recordException(err)</code> and sets an error status code on test failure, and — critically — calls <code>provider.forceFlush()</code> after <code>span.end()</code>, because Playwright kills its worker processes immediately after tests finish, and without a forced flush the batch exporter's default few-second delay means the spans never leave the process at all.</p>
+
+<h3>Distributed tracing: what a trace and span actually are</h3>
+
+<p>A <strong>trace</strong> is the complete journey of one request as it crosses however many services it touches. A <strong>span</strong> is one named unit of work inside that journey — it has a start time, a duration, a parent-child relationship to other spans, arbitrary attributes, and can record an exception. Traces answer a question metrics fundamentally cannot: given <em>this one specific</em> slow or failed request, exactly which downstream call ate the time? A p95 latency metric tells you <em>that</em> 5% of requests are slow — it is an aggregate, and by construction it cannot tell you which individual request, or which specific downstream dependency, caused any one instance of that slowness. You'd need to have already suspected the cause and instrumented a metric for it. A trace shows you the actual, unpredicted culprit after the fact, because it recorded the real span-by-span breakdown of that one request as it happened.</p>
+
+<p>The Tempo + Grafana pairing makes this concrete: Tempo stores traces cheaply (object-storage backed, indexing only the trace ID by default — the same "index less, store cheap" philosophy Loki applies to logs), and Grafana's trace view renders the span waterfall. This repo's own dashboards filter Tempo by a custom <code>run.id</code> attribute to pull up every span belonging to one specific validation run — the trace-equivalent of Loki's label filtering.</p>
+
+<h3>Prometheus vs. OpenTelemetry — when you need which</h3>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th></th><th>Prometheus</th><th>OpenTelemetry</th></tr></thead>
+<tbody>
+<tr><td>Data model</td><td>Metrics only</td><td>Traces + metrics + logs, unified</td></tr>
+<tr><td>Transport</td><td>Pull (scrape)</td><td>Push (OTLP)</td></tr>
+<tr><td>Granularity</td><td>Aggregated across time/instances</td><td>Per-request detail (traces)</td></tr>
+<tr><td>Cost</td><td>Cheap — fixed cardinality, fixed scrape cost</td><td>Expensive at full fidelity — every request is a record; sampling is usually required at scale</td></tr>
+<tr><td>Best for</td><td>Trends, alerting, SLOs, "is the system healthy right now"</td><td>Root-causing one specific slow/failed request; vendor-neutral instrumentation portability</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>These are complementary, not competing: use Prometheus-style metrics to know <em>that</em> something is wrong and to alert on it; use OpenTelemetry traces to find out <em>exactly where</em>, inside one specific failing request, the time or error actually occurred. Most mature setups run both, often with the OTel Collector as the bridge that also produces Prometheus-shaped metrics from the same instrumentation.</p>
+
+<h3>Kubernetes variant: DaemonSet vs. Deployment gateway</h3>
+
+<ul>
+<li><strong>DaemonSet</strong> — one Collector pod per node, receiving OTLP data from every pod on that node (via the node's IP or a hostPort). Adds node-level metadata cheaply, and is the natural default for always-on, infra-wide collection with minimal per-pod overhead.</li>
+<li><strong>Deployment (gateway pattern)</strong> — a centralized pool of Collector replicas behind a Service, either receiving directly from applications or receiving forwarded data from the per-node DaemonSet agents. This is the right place to centralize expensive, whole-trace-aware processing like <strong>tail-based sampling</strong> (deciding whether to keep a trace based on its final outcome — did it error, was it slow) — because that decision needs to see <em>every</em> span belonging to one trace in a single process, and spans of the same trace landing on different, mutually-unaware DaemonSet instances can never be correctly tail-sampled.</li>
+</ul>
+
+<p>A common real-world topology layers both: DaemonSet agents on every node doing lightweight local batching, forwarding to a smaller centralized Deployment gateway that does the heavier trace-aware processing and final export.</p>
+
+</section>
+
+<hr class="rule">
+
+<section id="practice">
+<h2>What to Practice Hands-On This Week</h2>
+<p>Reading this is necessary, not sufficient. Do these, in order, before the interview:</p>
+
+<ul class="checklist">
+<li><input type="checkbox"><span><span class="part-tag">P1–2</span>Stand up standalone Prometheus in Docker with one real scrape target. Hit <code>/targets</code> in the UI and run one query via <code>curl .../api/v1/query</code>.</span></li>
+<li><input type="checkbox"><span><span class="part-tag">P2</span>Deliberately break it two ways — bad YAML, and a container on the wrong network — and practice recognizing both failure signatures cold via <code>docker ps -a</code> / <code>docker logs</code> before you look anything up.</span></li>
+<li><input type="checkbox"><span><span class="part-tag">P3</span>Write a tiny exporter from scratch (five fake gauges is enough) and get Prometheus scraping it end to end, verified with a live query — not just "the target shows up green."</span></li>
+<li><input type="checkbox"><span><span class="part-tag">P1</span>Hand-write a broken <code>histogram_quantile()</code> query against multi-instance bucket data, watch it return a plausible-looking wrong number, then fix it with <code>sum(...) by (le)</code> and see the number change.</span></li>
+<li><input type="checkbox"><span><span class="part-tag">P6</span>Stand up Loki + Promtail locally, tail your own exporter's stdout, and correlate one log line with a metric spike in Grafana's Explore split view.</span></li>
+<li><input type="checkbox"><span><span class="part-tag">P5</span>Install <code>kube-prometheus-stack</code> in a local kind/minikube cluster and hand-write one <code>ServiceMonitor</code> against a Service you deploy yourself.</span></li>
+<li><input type="checkbox"><span><span class="part-tag">P7</span>Stand up the OTel Collector locally, send it one manual span (a tiny script or even a raw <code>curl</code> to the OTLP HTTP receiver), and confirm it appears wherever your pipeline routes it.</span></li>
+<li><input type="checkbox"><span><span class="part-tag">P4</span>Close every tab and recite Part 4 out loud from memory — the <code>docker run</code> flags, the four metric types, <code>rate</code> vs <code>irate</code> vs <code>increase</code>, and the <code>by (le)</code> rule — cold, with no notes.</span></li>
+</ul>
+</section>
+
+<footer>Grounded in infra/automation-exporter, infra/grafana-server, and README.md §18.1–18.4 of this repository.</footer>
+
+</div>
+
+</body></html>

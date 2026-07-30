@@ -1,0 +1,106 @@
+groups:
+  - name: automation-observability-alerting-rules
+    interval: 30s
+    rules:
+      - alert: AutomationExporterDown
+        expr: |
+          up{job="automation-results-exporter"} == 0
+          or
+          absent(up{job="automation-results-exporter"})
+        for: 1m
+        labels:
+          severity: critical
+          service: automation-results-exporter
+        annotations:
+          summary: "Automation results exporter is down"
+          description: "Prometheus cannot scrape the automation-results-exporter for more than 1 minute."
+
+      - alert: AutomationLatestRunMissing
+        expr: |
+          automation_last_run_status{status="missing"} == 1
+        for: 2m
+        labels:
+          severity: warning
+          service: automation
+        annotations:
+          summary: "Automation latest run is missing"
+          description: "The exporter cannot find latest.json. This usually means automation has not generated results yet or RESULTS_DIR is wrong."
+
+      - alert: AutomationLastRunFailed
+        expr: |
+          automation_last_run_status{status="failed"} == 1
+        for: 2m
+        labels:
+          severity: critical
+          service: automation
+        annotations:
+          summary: "Latest automation run failed"
+          description: "The latest Playwright automation run failed. Check Grafana, logs, and the CTRF report."
+
+      - alert: AutomationNoRecentRun
+        expr: |
+          (automation_last_run_timestamp_seconds > 0)
+          and on(environment)
+          (automation:seconds_since_last_run > 86400)
+        for: 5m
+        labels:
+          severity: warning
+          service: automation
+        annotations:
+          summary: "No recent automation run"
+          description: "No automation run has completed in the last 24 hours."
+
+      - alert: AutomationHighLatestFailureRatio
+        expr: |
+          automation:last_run_failure_ratio > 0.05
+        for: 2m
+        labels:
+          severity: warning
+          service: automation
+        annotations:
+          summary: "High failure ratio in latest automation run"
+          description: "The latest automation run failure ratio is above 5%."
+
+      - alert: AutomationHighHistoricalFailureRatio
+        expr: |
+          automation:history_test_failure_ratio > 0.10
+        for: 5m
+        labels:
+          severity: warning
+          service: automation
+        annotations:
+          summary: "High historical automation failure ratio"
+          description: "Historical automation test failure ratio is above 10%."
+
+      - alert: AutomationHistoryParseErrors
+        expr: |
+          automation_history_parse_errors > 0
+        for: 1m
+        labels:
+          severity: warning
+          service: automation-results-exporter
+        annotations:
+          summary: "Automation result parse errors"
+          description: "The exporter failed to parse one or more historical run result JSON files."
+
+      - alert: AutomationLastRunTooSlow
+        expr: |
+          automation_last_run_duration_seconds > 300
+        for: 2m
+        labels:
+          severity: warning
+          service: automation
+        annotations:
+          summary: "Latest automation run is slow"
+          description: "The latest automation run took more than 5 minutes."
+
+      - alert: AutomationAverageRunDurationTooSlow
+        expr: |
+          automation:history_run_duration_avg_seconds > 300
+        for: 5m
+        labels:
+          severity: warning
+          service: automation
+        annotations:
+          summary: "Average automation run duration is slow"
+          description: "The average historical automation run duration is above 5 minutes."

@@ -1,0 +1,53 @@
+groups:
+  - name: api-alert-rules
+    interval: 30s
+    rules:
+      - alert: ApiTargetDown
+        expr: up{job="api"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          service: api
+        annotations:
+          summary: "API target is down"
+          description: "Prometheus cannot scrape the API target for more than 30 seconds."
+
+      - alert: ApiHighErrorRatio
+        expr: api:http_error_ratio:5m > 0.05
+        for: 2m
+        labels:
+          severity: warning
+          service: api
+        annotations:
+          summary: "High API error ratio on {{ $labels.route }}"
+          description: "API error ratio is above 5% for route {{ $labels.route }}. Current value: {{ $value }}."
+
+      - alert: ApiHigh5xxRatio
+        expr: api:http_5xx_ratio:5m > 0.02
+        for: 2m
+        labels:
+          severity: critical
+          service: api
+        annotations:
+          summary: "High API 5xx ratio on {{ $labels.route }}"
+          description: "API 5xx ratio is above 2% for route {{ $labels.route }}. Current value: {{ $value }}."
+
+      - alert: ApiHighLatencyP95
+        expr: api:http_request_duration:p95_5m > 1
+        for: 2m
+        labels:
+          severity: warning
+          service: api
+        annotations:
+          summary: "High API p95 latency on {{ $labels.route }}"
+          description: "API p95 latency is above 1 second for route {{ $labels.route }}. Current value: {{ $value }} seconds."
+
+      - alert: ApiHighLatencyP99
+        expr: api:http_request_duration:p99_5m > 3
+        for: 2m
+        labels:
+          severity: critical
+          service: api
+        annotations:
+          summary: "High API p99 latency on {{ $labels.route }}"
+          description: "API p99 latency is above 3 seconds for route {{ $labels.route }}. Current value: {{ $value }} seconds."

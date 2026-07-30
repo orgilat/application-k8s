@@ -1,0 +1,93 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: exposureops
+      POSTGRES_PASSWORD: exposureops
+      POSTGRES_DB: exposureops
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U exposureops"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./apps/api
+    ports:
+      - "${API_PORT:-3000}:3000"
+    environment:
+      API_PORT: 3000
+      NODE_ENV: local
+      DATABASE_URL: postgresql://exposureops:exposureops@postgres:5432/exposureops
+      REDIS_URL: redis://redis:6379
+      SCAN_FINDINGS_GENERATION_ENABLED: ${SCAN_FINDINGS_GENERATION_ENABLED:-true}
+      OTEL_SERVICE_NAME: exposure-api
+      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://tempo:4318/v1/traces
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: ./apps/worker
+    environment:
+      DATABASE_URL: postgresql://exposureops:exposureops@postgres:5432/exposureops
+      REDIS_URL: redis://redis:6379
+      WORKER_PROCESSING_DELAY_MS: ${WORKER_PROCESSING_DELAY_MS:-2000}
+      WORKER_FAILURE_RATE_PERCENT: ${WORKER_FAILURE_RATE_PERCENT:-10}
+      SCAN_FINDINGS_GENERATION_ENABLED: ${SCAN_FINDINGS_GENERATION_ENABLED:-true}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./apps/web
+    ports:
+      - "${WEB_PORT:-5173}:5173"
+    environment:
+      VITE_API_BASE_URL: http://api:3000
+    depends_on:
+      - api
+
+  # One-off Playwright test runner (batch job). Run with:
+  #   docker compose run --rm playwright-runner
+  # Runs inside Docker so its stdout logs are collected by Alloy -> Loki.
+  playwright-runner:
+    image: mcr.microsoft.com/playwright:v1.61.1-jammy
+    working_dir: /work
+    ipc: host
+    environment:
+      BASE_URL: http://web:5173
+      API_BASE_URL: http://api:3000
+      AUTOMATION_ENV: local
+      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://alloy:4318/v1/traces
+    volumes:
+      - ./automation/playwright:/work
+      - /work/node_modules
+    command: sh -c "npm install && npm run test:observed"
+    depends_on:
+      - web
+      - api
+
+volumes:
+  postgres_data:

@@ -1,0 +1,988 @@
+<title>Playwright → Prometheus — Automation Observability Guide</title>
+<style>
+  :root{
+    --paper:#F5F6F8; --ink:#14181F; --ink-soft:#454C58; --surface:#ECEFF3; --surface-2:#E3E7EC;
+    --line:#D7DCE2; --accent:#8A5A1E; --accent-strong:#6E4717; --good:#0F766E; --bad:#B42318;
+    --muted:#78808F; --code-ink:#1B2027;
+    --shadow: 0 1px 2px rgba(20,24,31,.06), 0 8px 24px -12px rgba(20,24,31,.22);
+    --serif: "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,ui-serif,serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono: ui-monospace,"Cascadia Code","SF Mono",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0E1116; --ink:#E7EAEE; --ink-soft:#AEB6C2; --surface:#171B22; --surface-2:#1D222B;
+      --line:#2A313B; --accent:#E3A15C; --accent-strong:#F0B57A; --good:#4FD1C5; --bad:#F87171;
+      --muted:#8A93A2; --code-ink:#DCE1E8;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -18px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E1116; --ink:#E7EAEE; --ink-soft:#AEB6C2; --surface:#171B22; --surface-2:#1D222B;
+    --line:#2A313B; --accent:#E3A15C; --accent-strong:#F0B57A; --good:#4FD1C5; --bad:#F87171;
+    --muted:#8A93A2; --code-ink:#DCE1E8;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -18px rgba(0,0,0,.7);
+  }
+  :root[data-theme="light"]{
+    --paper:#F5F6F8; --ink:#14181F; --ink-soft:#454C58; --surface:#ECEFF3; --surface-2:#E3E7EC;
+    --line:#D7DCE2; --accent:#8A5A1E; --accent-strong:#6E4717; --good:#0F766E; --bad:#B42318;
+    --muted:#78808F; --code-ink:#1B2027;
+    --shadow: 0 1px 2px rgba(20,24,31,.06), 0 8px 24px -12px rgba(20,24,31,.22);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--paper); }
+  body{
+    margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+    font-size:16.5px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--accent-strong); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:hover{ color:var(--accent); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; border-radius:3px; }
+
+  h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; color:var(--ink); text-wrap:balance; }
+  h1{ font-size:2.35rem; line-height:1.15; margin:0 0 .4rem; }
+  h2{ font-size:1.55rem; margin:3rem 0 1rem; padding-top:1.4rem; border-top:1px solid var(--line); }
+  h2 .num{ color:var(--muted); font-family:var(--mono); font-size:1rem; font-weight:500; margin-right:.6rem; }
+  h3{ font-size:1.18rem; margin:2rem 0 .7rem; }
+  p{ margin:0 0 1rem; max-width:70ch; }
+  ul,ol{ margin:0 0 1rem; padding-left:1.3rem; max-width:68ch; }
+  li{ margin-bottom:.35rem; }
+  strong{ color:var(--ink); font-weight:650; }
+  code{ font-family:var(--mono); font-size:.88em; background:var(--surface); color:var(--code-ink); padding:.12em .38em; border-radius:4px; }
+  hr{ border:none; border-top:1px solid var(--line); margin:2.5rem 0; }
+
+  .eyebrow{ font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-strong); font-weight:600; }
+  .lede{ font-size:1.08rem; color:var(--ink-soft); max-width:62ch; }
+
+  /* ---- layout ---- */
+  .page{ display:grid; grid-template-columns:272px minmax(0,1fr); gap:0; max-width:1180px; margin:0 auto; }
+  .toc{ position:sticky; top:0; align-self:start; height:100dvh; overflow-y:auto; padding:2.2rem 1.4rem 2rem 2rem; border-right:1px solid var(--line); scrollbar-width:thin; }
+  .toc-title{ font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; }
+  .toc nav a{ display:block; font-size:.86rem; color:var(--ink-soft); text-decoration:none; padding:.32rem 0 .32rem .6rem; border-left:2px solid transparent; margin-left:-.6rem; }
+  .toc nav a:hover{ color:var(--ink); }
+  .toc nav a.active{ color:var(--accent-strong); border-left-color:var(--accent); font-weight:600; }
+  .toc-foot{ margin-top:1.6rem; padding-top:1rem; border-top:1px solid var(--line); }
+
+  .content{ padding:3rem 3.2rem 6rem; min-width:0; }
+  .titleblock{ margin-bottom:2.4rem; }
+  .meta-row{ display:flex; flex-wrap:wrap; gap:.5rem 1rem; margin-top:1rem; font-family:var(--mono); font-size:.78rem; color:var(--muted); }
+  .meta-row span{ display:inline-flex; align-items:center; gap:.4rem; }
+  .meta-row .dot{ width:6px; height:6px; border-radius:50%; background:var(--good); display:inline-block; }
+
+  .controls{ display:flex; gap:.5rem; margin-top:1.4rem; }
+  button.ctl{ font-family:var(--mono); font-size:.74rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line); padding:.5rem .8rem; border-radius:7px; cursor:pointer; }
+  button.ctl:hover{ color:var(--ink); border-color:var(--accent); }
+
+  section{ scroll-margin-top:1.2rem; }
+
+  /* ---- code blocks ---- */
+  .scroll-x{ overflow-x:auto; border-radius:10px; }
+  .codepane{ margin:1.1rem 0 1.4rem; border:1px solid var(--line); border-radius:10px; background:var(--surface); box-shadow:var(--shadow); }
+  .codepane-head{ display:flex; align-items:center; justify-content:space-between; padding:.5rem .9rem; border-bottom:1px solid var(--line); }
+  .codepane-tag{ font-family:var(--mono); font-size:.72rem; color:var(--muted); letter-spacing:.03em; }
+  .codepane-copy{ font-family:var(--mono); font-size:.7rem; color:var(--muted); background:none; border:1px solid var(--line); border-radius:5px; padding:.25rem .55rem; cursor:pointer; }
+  .codepane-copy:hover{ color:var(--ink); border-color:var(--accent); }
+  pre{ margin:0; padding:1rem 1.1rem; overflow-x:auto; }
+  pre code{ background:none; padding:0; font-size:.85rem; line-height:1.6; color:var(--code-ink); }
+
+  /* ---- tables ---- */
+  table{ width:100%; border-collapse:collapse; font-size:.88rem; }
+  thead th{ position:sticky; top:0; background:var(--surface); text-align:left; font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); font-weight:600; padding:.6rem .8rem; border-bottom:1px solid var(--line); }
+  td{ padding:.6rem .8rem; border-bottom:1px solid var(--line); vertical-align:top; }
+  td code{ white-space:nowrap; }
+  tbody tr:hover{ background:var(--surface); }
+  .tablewrap{ margin:1.1rem 0 1.5rem; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .tablewrap .scroll-x{ border-radius:0; }
+
+  /* ---- callouts ---- */
+  .callout{ margin:1.2rem 0; padding:.9rem 1.1rem; border-radius:10px; border:1px solid var(--line); border-left:3px solid var(--muted); background:var(--surface); }
+  .callout p:last-child{ margin-bottom:0; }
+  .callout .k{ font-family:var(--mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; display:block; margin-bottom:.3rem; }
+  .callout.note{ border-left-color:var(--muted); }
+  .callout.note .k{ color:var(--muted); }
+  .callout.gotcha{ border-left-color:var(--accent); }
+  .callout.gotcha .k{ color:var(--accent-strong); }
+  .callout.warn{ border-left-color:var(--bad); }
+  .callout.warn .k{ color:var(--bad); }
+
+  /* ---- diagram ---- */
+  .diagram{ margin:1.3rem 0 1rem; padding:1.6rem 1.2rem; border:1px solid var(--line); border-radius:12px; background:var(--surface); display:flex; flex-direction:column; align-items:center; gap:0; }
+  .dnode{ width:min(100%,460px); border:1px solid var(--line); background:var(--paper); border-radius:9px; padding:.65rem 1rem; text-align:center; font-size:.86rem; box-shadow:var(--shadow); }
+  .dnode b{ font-family:var(--mono); font-size:.86rem; color:var(--ink); }
+  .dnode small{ display:block; color:var(--muted); font-size:.74rem; margin-top:.15rem; }
+  .dnode.accent{ border-color:var(--accent); }
+  .dnode.accent b{ color:var(--accent-strong); }
+  .dnode.ghost{ opacity:.55; border-style:dashed; }
+  .darrow{ font-family:var(--mono); color:var(--muted); font-size:.78rem; padding:.35rem 0; text-align:center; line-height:1.3; }
+  .darrow .lbl{ display:block; font-size:.68rem; letter-spacing:.03em; }
+  .dsplit{ display:flex; flex-direction:column; gap:.5rem; align-items:center; }
+  .dgroup-label{ font-family:var(--mono); font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin:.5rem 0 .1rem; }
+  details.src{ margin-top:1rem; width:100%; max-width:520px; }
+  details.src summary{ cursor:pointer; font-family:var(--mono); font-size:.72rem; color:var(--muted); text-align:center; list-style:none; }
+  details.src summary::-webkit-details-marker{ display:none; }
+  details.src pre{ margin-top:.6rem; font-size:.74rem; }
+
+  .filetree{ font-family:var(--mono); font-size:.83rem; line-height:1.75; white-space:pre; color:var(--code-ink); }
+  .filetree .c{ color:var(--muted); }
+
+  .backtop{ position:fixed; right:2rem; bottom:2rem; }
+  .backtop a{ display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; box-shadow:var(--shadow); font-family:var(--mono); }
+  .backtop a:hover{ color:var(--accent-strong); border-color:var(--accent); }
+
+  footer.docfoot{ margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
+
+  @media (max-width: 880px){
+    .page{ grid-template-columns:1fr; }
+    .toc{ position:relative; height:auto; border-right:none; border-bottom:1px solid var(--line); }
+    .content{ padding:2rem 1.3rem 4rem; }
+  }
+
+  @media print{
+    .toc, .backtop, .controls{ display:none !important; }
+    .page{ display:block; max-width:100%; }
+    .content{ padding:0; }
+    body{ background:#fff; color:#000; font-size:11.5pt; }
+    .codepane, .callout, .tablewrap, .diagram, .dnode{ box-shadow:none !important; }
+    a{ color:#000; }
+    h2{ break-after:avoid; }
+    .codepane, table, .diagram{ break-inside:avoid; }
+  }
+</style>
+
+<div class="page">
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav id="tocnav">
+      <a href="#s1">01 · Problem</a>
+      <a href="#s2">02 · Architecture</a>
+      <a href="#s3">03 · Repo structure</a>
+      <a href="#s4">04 · Playwright reporting</a>
+      <a href="#s5">05 · What the exporter is</a>
+      <a href="#s6">06 · File by file</a>
+      <a href="#s7">07 · Metrics design</a>
+      <a href="#s8">08 · Gauge vs Counter</a>
+      <a href="#s9">09 · Docker Compose</a>
+      <a href="#s10">10 · Prometheus YAML</a>
+      <a href="#s11">11 · Local validation</a>
+      <a href="#s12">12 · Useful PromQL</a>
+      <a href="#s13">13 · GitHub Actions</a>
+      <a href="#s14">14 · Jenkins</a>
+      <a href="#s15">15 · Other report formats</a>
+      <a href="#s16">16 · Production notes</a>
+      <a href="#s17">17 · Future phases</a>
+      <a href="#s18">18 · Summary</a>
+    </nav>
+    <div class="toc-foot">
+      <div class="controls">
+        <button class="ctl" id="themeBtn" type="button">Theme</button>
+        <button class="ctl" id="printBtn" type="button">Save PDF</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="titleblock">
+      <div class="eyebrow">Part 1 of 2 — Technical Guide</div>
+      <h1>Playwright → Prometheus<br>Automation Observability</h1>
+      <p class="lede">How CTRF test reports become Prometheus metrics, why the exporter is built the way it is, and how to extend or migrate it. Verified against the real files in <code>exposure-automation-lab</code> — nothing here is aspirational unless a section says so.</p>
+      <div class="meta-row">
+        <span><span class="dot"></span> Verified against source</span>
+        <span>apps/automation-results-exporter</span>
+        <span>monitoring/prometheus</span>
+        <span>docker-compose-monitoring.yml</span>
+      </div>
+    </header>
+
+    <section id="s1">
+      <h2><span class="num">01</span>What problem this solves</h2>
+      <p>A Playwright HTML report answers "what happened in <em>this</em> run." It cannot answer:</p>
+      <ul>
+        <li>Is automation health getting worse over the last two weeks?</li>
+        <li>Did last night's scheduled run even happen?</li>
+        <li>Which suite or environment currently has the worst failure ratio?</li>
+        <li>Should someone be paged right now?</li>
+      </ul>
+      <p>That's the gap between <strong>test reporting</strong> and <strong>automation observability</strong>:</p>
+      <div class="tablewrap"><div class="scroll-x"><table>
+        <thead><tr><th>Question</th><th>Answered by</th></tr></thead>
+        <tbody>
+          <tr><td>Did test X pass in this run, and why not?</td><td>Playwright HTML report / CTRF JSON</td></tr>
+          <tr><td>Is the suite healthy <em>right now</em>?</td><td>Prometheus gauges (<code>automation_last_run_*</code>)</td></tr>
+          <tr><td>Is it getting healthier or worse over time?</td><td>History gauges + Grafana graphs</td></tr>
+          <tr><td>Did automation silently stop running?</td><td><code>automation_last_run_timestamp_seconds</code> + alert rule</td></tr>
+          <tr><td>Should someone be notified?</td><td>Alertmanager (later — Phase 7)</td></tr>
+        </tbody>
+      </table></div></div>
+      <p>This repository already generates CTRF JSON reports (Phase 1) and archives every run (Phase 2). This guide documents the exporter that bridges those JSON files into Prometheus (Phase 3 onward).</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">02</span>Final architecture</h2>
+      <div class="diagram">
+        <div class="dnode"><b>Playwright test run</b><small>short-lived — starts, runs, writes, exits</small></div>
+        <div class="darrow">↓<span class="lbl">CTRF / JSON reporter</span></div>
+        <div class="dnode"><b>results/runs/&lt;runId&gt;.json</b><small>one file per run, never overwritten</small></div>
+        <div class="darrow">↓<span class="lbl">run-with-results-history.js copies it</span></div>
+        <div class="dnode"><b>results/latest.json</b><small>always the most recent run</small></div>
+        <div class="darrow">↓<span class="lbl">read on every scrape — no state kept in memory</span></div>
+        <div class="dnode accent"><b>automation-results-exporter</b><small>Express + prom-client · long-running</small></div>
+        <div class="darrow">↓<span class="lbl">GET /metrics</span></div>
+        <div class="dnode accent"><b>Prometheus</b><small>exposure-prometheus · pulls every 1m</small></div>
+        <div class="darrow">↓</div>
+        <div class="dsplit">
+          <div class="dnode ghost"><b>Grafana dashboards</b><small>not built yet — Phase 6</small></div>
+          <div class="dnode ghost"><b>Alertmanager alerts</b><small>wired for "api" already · automation rules = Phase 7</small></div>
+          <div class="dnode ghost"><b>Loki logs</b><small>not wired yet — Phase 8</small></div>
+          <div class="dnode ghost"><b>OpenTelemetry / Tempo</b><small>not wired yet — Phase 9</small></div>
+          <div class="dnode ghost"><b>Kubernetes / Helm</b><small>not deployed yet — Phases 10–12</small></div>
+        </div>
+        <details class="src">
+          <summary>Show plain-text source</summary>
+<pre><code>Playwright test run
+        |
+        v
+CTRF / JSON report generation
+        |
+        v
+automation/playwright/results/latest.json
+automation/playwright/results/runs/*.json
+        |
+        v
+automation-results-exporter
+        |
+        v
+GET /metrics
+        |
+        v
+Prometheus scrapes exporter
+        |
+        v
+Grafana dashboards later
+Alertmanager alerts later
+Loki logs later
+OpenTelemetry / Tempo traces later
+Kubernetes / Helm later</code></pre>
+        </details>
+      </div>
+
+      <h3>Component by component</h3>
+      <ul>
+        <li><strong>Playwright</strong> — runs the suite in <code>automation/playwright/tests/{api,ui}</code>. Short-lived: starts, runs, writes a report, exits.</li>
+        <li><strong>CTRF reporter</strong> (<code>playwright-ctrf-json-reporter</code>) — a Playwright reporter plugin, configured in <code>playwright.config.ts</code>, emitting a normalized JSON report instead of Playwright's native format.</li>
+        <li><strong><code>latest.json</code></strong> — always the most recent run's CTRF report, at a fixed path, so the exporter never has to guess which file is "current."</li>
+        <li><strong><code>runs/*.json</code></strong> — one archived CTRF report per run, named by run ID, never overwritten — what makes historical metrics possible.</li>
+        <li><strong><code>automation-results-exporter</code></strong> — a small long-running Express service that reads both and renders them as Prometheus metrics.</li>
+        <li><strong>prom-client</strong> — the Node.js Prometheus client library used to define Gauges and render the exposition format.</li>
+        <li><strong>Express</strong> — the HTTP framework serving <code>/health</code>, <code>/ready</code>, <code>/metrics</code>.</li>
+        <li><strong><code>/metrics</code></strong> — the actual scrape endpoint; recomputed on every request.</li>
+        <li><strong>Prometheus</strong> — <code>exposure-prometheus</code> container, pulls from every target on <code>scrape_interval: 1m</code>.</li>
+        <li><strong>Grafana, Loki, OTel/Tempo, Kubernetes/Helm</strong> — future phases, intentionally not implemented yet (§17).</li>
+      </ul>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">03</span>Existing repository structure</h2>
+      <p>Paths that are part of this system today (verified to exist):</p>
+      <div class="codepane">
+        <div class="codepane-head"><span class="codepane-tag">tree</span><button class="codepane-copy" data-copy>Copy</button></div>
+        <pre><code class="filetree">automation/playwright/
+├── playwright.config.ts          <span class="c"># test runner + CTRF reporter config</span>
+├── package.json                  <span class="c"># test scripts, incl. test:observed</span>
+├── scripts/
+│   └── run-with-results-history.js   <span class="c"># wraps `playwright test`, maintains latest.json</span>
+├── results/
+│   ├── latest.json                <span class="c"># most recent run's CTRF report</span>
+│   └── runs/
+│       └── &lt;runId&gt;.json           <span class="c"># one archived CTRF report per run</span>
+└── tests/
+    ├── api/*.spec.ts
+    └── ui/*.spec.ts
+
+apps/automation-results-exporter/
+├── Dockerfile
+├── package.json
+├── tsconfig.json
+├── dist/                          <span class="c"># build output (git-ignored, tsc output)</span>
+└── src/
+    ├── config.ts
+    ├── app.ts
+    ├── index.ts
+    ├── routes/
+    │   ├── health.routes.ts
+    │   └── metrics.routes.ts
+    ├── results/
+    │   ├── ctrf-reader.ts
+    │   └── runs-reader.ts
+    └── metrics/
+        ├── registry.ts
+        ├── automation.metrics.ts
+        ├── update-latest-run.metrics.ts
+        └── update-history.metrics.ts
+
+monitoring/
+├── prometheus/
+│   ├── prometheus.yml
+│   └── rules/
+│       ├── api-recording-rules.yml
+│       └── api-alert-rules.yml
+└── alertmanager/
+    └── alertmanager.yml
+
+docker-compose.yml              <span class="c"># main app stack: postgres, redis, api, worker, web</span>
+docker-compose-monitoring.yml   <span class="c"># observability stack</span></code></pre>
+      </div>
+
+      <div class="callout gotcha">
+        <span class="k">Naming note</span>
+        <p>This repository's monitoring compose file is named <code>docker-compose-monitoring.yml</code> (hyphen). It is <em>not</em> <code>docker-compose.monitoring.yml</code> (dot). Every command in this guide uses the real, hyphenated filename.</p>
+      </div>
+
+      <h3>Not present in this repository</h3>
+      <ul>
+        <li>No <code>.github/workflows/</code> — §13 documents a recommended pattern, not an existing one.</li>
+        <li>No <code>Jenkinsfile</code> — §14 is likewise a recommended pattern.</li>
+        <li>No Kubernetes manifests or Helm chart — out of scope for this guide (§17, Phases 10–12).</li>
+        <li>No Grafana dashboards or provisioning — out of scope (§17, Phase 6).</li>
+        <li><code>.env.example</code> at the repo root does not list the exporter's <code>PORT</code> / <code>AUTOMATION_ENV</code> / <code>RESULTS_DIR</code>. They have working defaults in <code>config.ts</code> and are set explicitly in <code>docker-compose-monitoring.yml</code> — not broken, just worth adding for discoverability.</li>
+      </ul>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">04</span>Playwright reporting setup</h2>
+      <p>Configuration lives in <code>automation/playwright/playwright.config.ts</code>:</p>
+      <div class="codepane">
+        <div class="codepane-head"><span class="codepane-tag">playwright.config.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+        <pre><code>const automationRunId =
+  process.env.AUTOMATION_RUN_ID ||
+  `run-${new Date().toISOString().replace(/[:.]/g, '-')}`;
+
+export default defineConfig({
+  testDir: './tests',
+  fullyParallel: true,
+  reporter: [
+    ['html', { open: 'never', outputFolder: 'playwright-report' }],
+    ['playwright-ctrf-json-reporter', {
+      outputDir: 'results/runs',
+      outputFile: `${automationRunId}.json`,
+    }],
+  ],
+  // ...
+});</code></pre>
+      </div>
+      <p>Two things happen per test run:</p>
+      <ol>
+        <li><strong>A unique run file is created.</strong> <code>automationRunId</code> is either passed via the <code>AUTOMATION_RUN_ID</code> env var, or generated from the current timestamp. The CTRF reporter writes straight to <code>results/runs/&lt;automationRunId&gt;.json</code> — Playwright itself never touches <code>latest.json</code>.</li>
+        <li><strong><code>latest.json</code> is a separate step</strong>, handled by <code>automation/playwright/scripts/run-with-results-history.js</code>, run via <code>npm run test:observed</code>.</li>
+      </ol>
+      <div class="codepane">
+        <div class="codepane-head"><span class="codepane-tag">scripts/run-with-results-history.js</span><button class="codepane-copy" data-copy>Copy</button></div>
+        <pre><code>const runId = process.env.AUTOMATION_RUN_ID || `run-${new Date().toISOString().replace(/[:.]/g, '-')}`;
+
+const child = spawn(playwrightBin, ['playwright', 'test', ...argsFromCli], {
+  env: { ...process.env, AUTOMATION_RUN_ID: runId },
+});
+
+child.on('exit', (code, signal) => {
+  const runResultPath = path.join(runsDir, `${runId}.json`);
+  const latestPath = path.join(resultsDir, 'latest.json');
+
+  if (fs.existsSync(runResultPath)) {
+    fs.copyFileSync(runResultPath, latestPath);   // the actual "update latest" step
+  }
+
+  if (typeof code === 'number') process.exit(code);  // propagates Playwright's exit code
+});</code></pre>
+      </div>
+      <p>The script generates one <code>runId</code>, exports it as <code>AUTOMATION_RUN_ID</code> so Playwright's reporter uses the exact same ID, waits for the process to exit, then copies that run's file over <code>latest.json</code>. It always exits with Playwright's real exit code — a CI pipeline calling <code>npm run test:observed</code> still fails correctly when tests fail, even though <code>latest.json</code> gets updated either way.</p>
+
+      <div class="callout note">
+        <span class="k">Why latest.json exists</span>
+        <p>A fixed, predictable filename means the exporter's "current state" read is a single <code>fs.existsSync</code> + one file read — no need to sort/filter the <code>runs/</code> directory to find "the most recent one" on every scrape.</p>
+      </div>
+      <div class="callout note">
+        <span class="k">Why runs/*.json exists</span>
+        <p><code>latest.json</code> gets overwritten every run, so on its own it cannot answer "how many runs failed in the last week." Every run is additionally preserved, immutably, under its own run ID — supporting both current-state and historical metrics with exactly two read paths (§5).</p>
+      </div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">05</span>What the exporter is, and what this one does</h2>
+      <p>A <strong>Prometheus exporter</strong> is any HTTP service that exposes <code>GET /metrics</code> in Prometheus's text exposition format. It is not part of Prometheus itself — it's a small adapter you write for anything Prometheus doesn't natively know how to scrape (a database, a queue, or here, a directory of JSON test reports).</p>
+      <p>This exporter, specifically:</p>
+      <ol>
+        <li>Reads <code>results/latest.json</code> → "what's the current state" gauges.</li>
+        <li>Scans <code>results/runs/*.json</code> → "what's the historical state" gauges.</li>
+        <li>Normalizes both into a single shape (<code>total/passed/failed/skipped/pending/other</code>, <code>durationSeconds</code>, <code>completedAtSeconds</code>) regardless of the underlying CTRF structure.</li>
+        <li>Updates prom-client <code>Gauge</code> objects with those numbers.</li>
+        <li>Exposes <code>GET /health</code> (liveness), <code>GET /ready</code> (resolved config), <code>GET /metrics</code> (the scrape target).</li>
+      </ol>
+      <p>Nothing in the exporter runs tests, watches the filesystem, or holds state between requests — every <code>/metrics</code> call re-reads the files fresh. This is a deliberate simplicity trade-off: correct-by-construction (there's no cache to go stale) at the cost of a small amount of file I/O once a minute, negligible at this scale.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">06</span>File-by-file explanation</h2>
+
+      <h3><code>apps/automation-results-exporter/package.json</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">package.json</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>{
+  "name": "automation-results-exporter",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.3",
+    "prom-client": "^15.1.3"
+  }
+}</code></pre></div>
+      <ul>
+        <li><strong>Responsibility:</strong> declares the two runtime dependencies (Express for HTTP, prom-client for metrics) and the three lifecycle scripts.</li>
+        <li><strong>Why it exists:</strong> standard Node service packaging — <code>dev</code> for local iteration via <code>tsx</code>, <code>build</code>/<code>start</code> for the compiled path the Dockerfile uses.</li>
+        <li><strong>Depends on:</strong> nothing in this project. <strong>Depended on by:</strong> the Dockerfile, anyone running <code>npm run dev</code>.</li>
+      </ul>
+
+      <h3><code>apps/automation-results-exporter/tsconfig.json</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">tsconfig.json</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true
+  },
+  "include": ["src/**/*.ts"]
+}</code></pre></div>
+      <ul>
+        <li><strong>Responsibility:</strong> compiles <code>src/**/*.ts</code> to <code>dist/</code> as CommonJS, strict-mode TypeScript.</li>
+        <li><strong>Why it exists:</strong> <code>node dist/index.js</code> (the production start command) needs plain JS; this produces it.</li>
+      </ul>
+
+      <h3><code>apps/automation-results-exporter/Dockerfile</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">Dockerfile</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>FROM node:20-alpine
+WORKDIR /app
+COPY apps/automation-results-exporter/package*.json ./
+RUN npm install
+COPY apps/automation-results-exporter/tsconfig.json ./tsconfig.json
+COPY apps/automation-results-exporter/src ./src
+RUN npm run build
+ENV NODE_ENV=production
+EXPOSE 3001
+CMD ["npm", "start"]</code></pre></div>
+      <div class="callout gotcha">
+        <span class="k">Important detail</span>
+        <p>Every <code>COPY</code> is prefixed with <code>apps/automation-results-exporter/...</code> because the Docker <strong>build context is the repository root</strong> (<code>context: .</code>), not the app folder. If you ever see <code>npm error Missing script: "build"</code>, it almost always means the build context was pointed at the wrong directory and <code>COPY package*.json ./</code> grabbed the wrong <code>package.json</code>.</p>
+      </div>
+
+      <h3><code>src/config.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/config.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>import path from 'path';
+
+const resultsDir = path.resolve(
+  process.env.RESULTS_DIR ?? '../../automation/playwright/results'
+);
+
+export const config = {
+  port: Number(process.env.PORT ?? 3001),
+  environment: process.env.AUTOMATION_ENV ?? 'local',
+  resultsDir,
+  latestResultsFilePath: path.join(resultsDir, 'latest.json'),
+};</code></pre></div>
+      <ul>
+        <li><strong>Responsibility:</strong> the single source of truth for runtime configuration.</li>
+        <li><strong>Why it exists:</strong> every other file imports <code>config</code> instead of reading <code>process.env</code> directly.</li>
+        <li><strong>Depended on by:</strong> <code>index.ts</code>, <code>health.routes.ts</code>, <code>update-latest-run.metrics.ts</code>, <code>update-history.metrics.ts</code>.</li>
+      </ul>
+
+      <h3><code>src/app.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/app.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>import express from 'express';
+import { healthRouter } from './routes/health.routes';
+import { metricsRouter } from './routes/metrics.routes';
+
+export const app = express();
+app.use(express.json());
+app.use(healthRouter);
+app.use(metricsRouter);</code></pre></div>
+      <p><strong>Why it exists:</strong> separating "build the app" from "start listening" (<code>index.ts</code>'s job) keeps the app importable/testable without binding a real port.</p>
+
+      <h3><code>src/index.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/index.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>import { app } from './app';
+import { config } from './config';
+
+app.listen(config.port, () => {
+  console.log(JSON.stringify({
+    level: 'info',
+    service: 'automation-results-exporter',
+    message: 'server started',
+    port: config.port,
+    environment: config.environment,
+    resultsDir: config.resultsDir,
+  }));
+});</code></pre></div>
+      <p>Logs one structured JSON line on startup — exactly the shape a log pipeline like Loki/Promtail wants to parse later (§17, Phase 8), with zero changes.</p>
+
+      <h3><code>src/routes/health.routes.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/routes/health.routes.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>export const healthRouter = Router();
+
+healthRouter.get('/health', (_req, res) => {
+  res.json({ status: 'ok', service: 'automation-results-exporter' });
+});
+
+healthRouter.get('/ready', (_req, res) => {
+  res.json({
+    status: 'ready',
+    environment: config.environment,
+    resultsDir: config.resultsDir,
+    latestResultsFilePath: config.latestResultsFilePath,
+  });
+});</code></pre></div>
+      <p><strong>Why <code>/ready</code> echoes config</strong> instead of just saying "ready": when something looks wrong (e.g. metrics are all zero), the first debugging step is "is it even reading the directory I think it's reading?" — <code>/ready</code> answers that without container exec access.</p>
+
+      <h3><code>src/routes/metrics.routes.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/routes/metrics.routes.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>export const metricsRouter = Router();
+
+metricsRouter.get('/metrics', async (_req, res) => {
+  try {
+    updateLatestRunMetrics();
+    updateHistoryMetrics();
+
+    res.set('Content-Type', registry.contentType);
+    res.end(await registry.metrics());
+  } catch (error) {
+    console.error(JSON.stringify({
+      level: 'error',
+      service: 'automation-results-exporter',
+      message: 'failed to generate metrics',
+      error: error instanceof Error ? error.message : String(error),
+    }));
+    res.status(500).send('failed to generate metrics\n');
+  }
+});</code></pre></div>
+      <p>The only place in the whole exporter where "update metrics" and "read files" get triggered — on demand, per request. Both updates run on every request because <strong>Prometheus's scrape is the trigger for freshness</strong> — there's no background timer re-reading files on its own schedule.</p>
+
+      <h3><code>src/results/ctrf-reader.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/results/ctrf-reader.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>export function readCtrfRunResult(filePath: string): LatestRunResult {
+  if (!fs.existsSync(filePath)) {
+    return emptyLatestRunResult();   // exists: false, everything 0 — never throws
+  }
+  const report = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as CtrfReport;
+  const summary = report.results?.summary;
+  // ... extracts total/passed/failed/skipped/pending/other, durationSeconds, completedAtSeconds
+}</code></pre></div>
+      <p><strong>Responsibility:</strong> parse <em>one</em> CTRF JSON file into a normalized <code>LatestRunResult</code> — the only file that knows what a CTRF report's JSON shape looks like. Called both on <code>latest.json</code> (may not exist on a fresh checkout) and on every file under <code>runs/</code> (could be partially written/corrupt) — missing file → <code>emptyLatestRunResult()</code>, and the caller additionally wraps its own call in <code>try/catch</code> for JSON parse errors.</p>
+
+      <h3><code>src/results/runs-reader.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/results/runs-reader.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>export function readRunsHistory(resultsDir: string): RunsHistoryResult {
+  const runsDir = path.join(resultsDir, 'runs');
+  const history = createEmptyHistory(runsDir);
+  if (!fs.existsSync(runsDir)) return history;
+
+  const runFilePaths = fs.readdirSync(runsDir)
+    .filter((f) => f.endsWith('.json'))
+    .map((f) => path.join(runsDir, f));
+
+  for (const runFilePath of runFilePaths) {
+    addRunToHistory(history, runFilePath);   // via readCtrfRunResult, catches parse errors
+  }
+  return history;
+}</code></pre></div>
+      <p><strong>Responsibility:</strong> aggregate <em>every</em> file under <code>results/runs/</code> into totals. Re-scans the whole directory on every call — cheap at the scale of a single project's history; explicitly the place to revisit if run history grows very large (§16). A run counts as <code>failed</code> if it has ≥1 failed test, <code>passed</code> if zero failures and ≥1 test, otherwise <code>other</code>.</p>
+
+      <h3><code>src/metrics/registry.ts</code></h3>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">src/metrics/registry.ts</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>export const registry = new Registry();
+collectDefaultMetrics({ register: registry });</code></pre></div>
+      <p>The single prom-client <code>Registry</code> every metric registers into — avoids a circular-import mess. <code>collectDefaultMetrics</code> additionally adds standard Node.js process metrics (CPU, memory, event loop lag, GC) for free.</p>
+
+      <h3><code>src/metrics/automation.metrics.ts</code></h3>
+      <p>Defines every custom <code>Gauge</code> this exporter exposes (full list + rationale in §7–8). All nine metrics register into the shared registry and are exported as named constants for the <code>update-*</code> files to call <code>.set()</code> on.</p>
+
+      <h3><code>src/metrics/update-latest-run.metrics.ts</code></h3>
+      <p>Reads <code>config.latestResultsFilePath</code> through <code>readCtrfRunResult</code>, then calls <code>.set()</code> on every last-run gauge, including deriving the tri-state <code>automation_last_run_status{status="passed|failed|missing"}</code> from <code>exists</code>/<code>total</code>/<code>failed</code>.</p>
+
+      <h3><code>src/metrics/update-history.metrics.ts</code></h3>
+      <p>Reads <code>config.resultsDir</code> through <code>readRunsHistory</code>, then calls <code>.set()</code> on every history gauge.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">07</span>Metrics design</h2>
+      <h3>Current-state metrics (from latest.json)</h3>
+      <div class="tablewrap"><div class="scroll-x"><table>
+        <thead><tr><th>Metric</th><th>Labels</th><th>Example</th><th>Dashboard use</th><th>Alert use</th></tr></thead>
+        <tbody>
+          <tr><td><code>automation_last_run_tests</code></td><td>environment, status</td><td><code>{status="failed"} 3</code></td><td>Stat: failed tests in last run</td><td>Fire when status=failed &gt; 0</td></tr>
+          <tr><td><code>automation_last_run_duration_seconds</code></td><td>environment</td><td><code>23.6</code></td><td>Time-series: run duration trend</td><td>Fire on abnormally long runs</td></tr>
+          <tr><td><code>automation_last_run_status</code></td><td>environment, status</td><td><code>{status="failed"} 1</code></td><td>Single-stat health (green/red)</td><td>Fire when status=failed == 1</td></tr>
+          <tr><td><code>automation_last_run_timestamp_seconds</code></td><td>environment</td><td><code>1784048338.93</code></td><td>"Last run: X min ago"</td><td>Fire on stale automation (§12)</td></tr>
+        </tbody>
+      </table></div></div>
+      <h3>Historical metrics (from runs/*.json)</h3>
+      <div class="tablewrap"><div class="scroll-x"><table>
+        <thead><tr><th>Metric</th><th>Labels</th><th>Example</th><th>Dashboard use</th><th>Alert use</th></tr></thead>
+        <tbody>
+          <tr><td><code>automation_history_runs</code></td><td>environment, status</td><td><code>{status="failed"} 5</code></td><td>Bar/pie: pass vs fail counts</td><td>Fire on rising failed-run count</td></tr>
+          <tr><td><code>automation_history_tests</code></td><td>environment, status</td><td><code>{status="failed"} 12</code></td><td>Trend: cumulative failed tests</td><td>Feeds ratios, rarely alerts directly</td></tr>
+          <tr><td><code>automation_history_run_duration_seconds_sum</code></td><td>environment</td><td><code>142.8</code></td><td>Paired with _count for average</td><td>—</td></tr>
+          <tr><td><code>automation_history_run_duration_seconds_count</code></td><td>environment</td><td><code>6</code></td><td>Denominator for average duration</td><td>—</td></tr>
+          <tr><td><code>automation_history_parse_errors</code></td><td>environment</td><td><code>0</code></td><td>Data-quality panel</td><td>Fire if &gt; 0</td></tr>
+        </tbody>
+      </table></div></div>
+      <p>Plus standard <code>process_*</code> metrics from <code>collectDefaultMetrics</code> — useful for "is the exporter itself healthy," separate from automation health.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">08</span>Gauge vs Counter</h2>
+      <p>Every metric above is a <strong>Gauge</strong>, not a <code>Counter</code> — correct for this specific architecture, worth understanding why, not just copying.</p>
+      <p>A Prometheus <code>Counter</code> may only increase (reset to zero only on process restart) — it models "total events since the process started," e.g. <code>http_requests_total</code> in the <code>api</code> service. This exporter is not counting events it witnessed — it <strong>recomputes current state from files on disk, from scratch, on every scrape</strong>:</p>
+      <ul>
+        <li><code>automation_history_runs</code> isn't incremented once per new run — it's the count of files currently in <code>runs/</code>, every time <code>/metrics</code> is hit.</li>
+        <li>If old files are deleted from <code>results/runs/</code> (rotation, §16), that number should legitimately go <strong>down</strong>. A Counter going down is either rejected by client libraries or misread by Prometheus as a process restart — silently corrupting any <code>rate()</code>/<code>increase()</code> query built on top.</li>
+        <li>The exporter has zero memory between requests — <code>Gauge.set()</code> is exactly "here is the current true value," full stop.</li>
+      </ul>
+      <p><strong>When would Counter be correct instead?</strong> An event-driven design — e.g. the exporter exposing <code>POST /runs</code>, incrementing an in-memory counter once per received event. That's push, not pull, and event-count, not file-scan — not what this repository implements.</p>
+      <div class="callout warn">
+        <span class="k">Concrete warning</span>
+        <p>Do not "optimize" this exporter by switching to a <code>Counter</code> and incrementing it once per file found while scanning <code>runs/</code>. Every scrape re-scans the <em>entire</em> directory, so a Counter would re-count the same files again and again, growing unboundedly and lying about actual run counts. <code>Gauge.set()</code> (replace, not add) is the only correct operation for a "recompute from source of truth" reader.</p>
+      </div>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">09</span>Docker Compose integration</h2>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">docker-compose-monitoring.yml</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>automation-results-exporter:
+  build:
+    context: .
+    dockerfile: apps/automation-results-exporter/Dockerfile
+  container_name: exposure-automation-results-exporter
+  ports:
+    - "3001:3001"
+  environment:
+    PORT: 3001
+    AUTOMATION_ENV: local
+    RESULTS_DIR: /app/results
+  volumes:
+    - ./automation/playwright/results:/app/results:ro
+  restart: unless-stopped
+  networks:
+    - monitoring</code></pre></div>
+      <ul>
+        <li><strong><code>build.context: .</code></strong> — the repo root, not the app folder (§6, Dockerfile note).</li>
+        <li><strong><code>ports</code></strong> — exposes the exporter on the host at <code>localhost:3001</code> for your own browser/curl access; unrelated to how Prometheus reaches it.</li>
+        <li><strong><code>RESULTS_DIR: /app/results</code></strong> — the container-side path, matching the volume mount target, <em>not</em> the host path.</li>
+        <li><strong><code>volumes ... :ro</code></strong> — read-only. The exporter only ever reads test results; it has no business writing to them.</li>
+        <li><strong><code>networks: [monitoring]</code></strong> — required so <code>exposure-prometheus</code> (also on <code>monitoring</code>) can resolve the exporter by Docker's internal DNS. Without a shared network the containers cannot reach each other by service name, regardless of published host ports.</li>
+      </ul>
+      <div class="callout gotcha">
+        <span class="k">Why automation-results-exporter:3001, not localhost:3001</span>
+        <p>Inside the <code>exposure-prometheus</code> container, <code>localhost</code> means <em>that container itself</em>. Docker Compose's embedded DNS resolves a service name to the right container's IP, but only for containers on the <strong>same network</strong>. This is the single most common mistake when wiring a new scrape target: copying the <code>ports:</code> host-side port into <code>prometheus.yml</code> instead of the service name.</p>
+      </div>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">10</span>Prometheus YAML</h2>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">monitoring/prometheus/prometheus.yml</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>global:
+  scrape_interval: 1m
+  scrape_timeout: 10s
+
+scrape_configs:
+  # ...
+  - job_name: automation-results-exporter
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - automation-results-exporter:3001</code></pre></div>
+      <ul>
+        <li><strong><code>global.scrape_interval: 1m</code></strong> — applies to every job unless overridden; how often Prometheus pulls <code>/metrics</code> from every target.</li>
+        <li><strong><code>job_name</code></strong> — becomes the <code>job</code> label on every metric this target produces.</li>
+        <li><strong><code>metrics_path</code></strong> — explicit here, though <code>/metrics</code> is Prometheus's default anyway.</li>
+        <li><strong><code>targets</code></strong> — Docker service name + container port, per §9.</li>
+      </ul>
+      <p><strong>How <code>/targets</code> should look</strong> once healthy — http://localhost:9090/targets:</p>
+      <div class="codepane"><pre><code>automation-results-exporter   UP</code></pre></div>
+      <h3>Debugging a DOWN target, in order</h3>
+      <ol>
+        <li>Is the container running? <code>docker ps | grep automation-results-exporter</code></li>
+        <li>Is <code>/metrics</code> reachable from outside Docker? <code>curl http://localhost:3001/metrics</code></li>
+        <li>Is it reachable from <em>inside</em> the Prometheus container, by service name?
+          <div class="codepane"><pre><code>docker exec exposure-prometheus wget -qO- http://automation-results-exporter:3001/metrics</code></pre></div>
+          If step 2 works but step 3 doesn't, it's a Docker networking issue (missing <code>networks:</code> entry), not an application bug.
+        </li>
+        <li>Check the actual scrape error Prometheus recorded:
+          <div class="codepane"><pre><code>curl -s http://localhost:9090/api/v1/targets | grep -A2 automation-results-exporter</code></pre></div>
+        </li>
+        <li><strong>Did you just edit <code>prometheus.yml</code>?</strong> Prometheus does not hot-reload a bind-mounted config file. <code>docker restart exposure-prometheus</code> (or send a reload signal if <code>--web.enable-lifecycle</code> is set). A newly added job simply won't appear under <code>/targets</code> at all until this happens.</li>
+      </ol>
+      <p><strong>Testing PromQL:</strong> http://localhost:9090/graph, or the HTTP API directly:</p>
+      <div class="codepane"><pre><code>curl -s --get http://localhost:9090/api/v1/query \
+  --data-urlencode 'query=automation_last_run_tests' | jq</code></pre></div>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">11</span>Local validation flow</h2>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">bash</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code># 1. Generate results (from automation/playwright)
+cd automation/playwright
+npm install
+npm run test:observed
+#   -> writes results/latest.json
+#   -> writes results/runs/&lt;runId&gt;.json
+
+# 2. Confirm the files exist
+ls results/latest.json
+ls results/runs
+
+# 3. Build the exporter locally (optional sanity check before Docker)
+cd ../../apps/automation-results-exporter
+npm install
+npm run build
+
+# 4. Start the full stack (from the repo root)
+cd ../..
+docker compose -f docker-compose.yml -f docker-compose-monitoring.yml up -d --build
+
+# 5. Check the exporter directly
+curl http://localhost:3001/health
+curl http://localhost:3001/ready
+curl http://localhost:3001/metrics | grep automation_
+
+# 6. Check Prometheus discovered it
+curl -s http://localhost:9090/api/v1/targets | python -c \
+  "import json,sys; d=json.load(sys.stdin); [print(t['labels']['job'], t['health']) for t in d['data']['activeTargets']]"
+
+# 7. Test PromQL (see §12 for the full query list)
+curl -s --get http://localhost:9090/api/v1/query \
+  --data-urlencode 'query=automation_last_run_status' | jq</code></pre></div>
+      <p>If <code>prometheus.yml</code> was edited after Prometheus was already running, <code>docker restart exposure-prometheus</code> before step 6.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">12</span>Useful PromQL</h2>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">promql</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code># Latest run: failed test count
+automation_last_run_tests{status="failed"}
+
+# Latest run: passed test count
+automation_last_run_tests{status="passed"}
+
+# Latest run failed? (1 = yes)
+automation_last_run_status{status="failed"} == 1
+
+# Latest run passed? (1 = yes)
+automation_last_run_status{status="passed"} == 1
+
+# Is the latest run "missing" (latest.json absent)?
+automation_last_run_status{status="missing"} == 1
+
+# Historical runs grouped by outcome
+automation_history_runs
+
+# Historical tests grouped by outcome
+automation_history_tests
+
+# Historical failure ratio (failed runs / total runs)
+automation_history_runs{status="failed"} / automation_history_runs{status="total"}
+
+# Average historical run duration
+automation_history_run_duration_seconds_sum / automation_history_run_duration_seconds_count
+
+# Time since the last run completed, in seconds
+time() - automation_last_run_timestamp_seconds
+
+# Is the exporter itself up?
+up{job="automation-results-exporter"}</code></pre></div>
+    </section>
+
+    <section id="s13">
+      <h2><span class="num">13</span>GitHub Actions integration</h2>
+      <div class="callout note">
+        <span class="k">Not present in this repository</span>
+        <p>No <code>.github/workflows/</code> directory exists yet. This section documents the recommended pattern for when CI is added — a starting point, not something to inspect.</p>
+      </div>
+      <p>The key constraint: a GitHub Actions job is <strong>short-lived</strong>. The exporter must live somewhere that persists across job runs, so it can serve <code>/metrics</code> continuously.</p>
+      <div class="tablewrap"><div class="scroll-x"><table>
+        <thead><tr><th>Pattern</th><th>Fits</th><th>How</th></tr></thead>
+        <tbody>
+          <tr><td>Upload results as a workflow artifact</td><td>Local learning / small teams</td><td><code>actions/upload-artifact</code> after the test step; downloaded into the exporter's <code>RESULTS_DIR</code></td></tr>
+          <tr><td>Upload to shared storage (S3, etc.)</td><td>Small production setups</td><td>CI syncs <code>results/</code> to S3; exporter syncs from the same bucket on a timer</td></tr>
+          <tr><td>Push to an ingestion endpoint</td><td>Production, multiple CI sources</td><td>Exporter exposes <code>POST /runs</code>; CI curls the finished CTRF file directly</td></tr>
+        </tbody>
+      </table></div></div>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">.github/workflows/playwright.yml — example, does not exist yet</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>name: Playwright
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - working-directory: automation/playwright
+        run: npm install
+      - working-directory: automation/playwright
+        run: npm run test:observed
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-results
+          path: automation/playwright/results/</code></pre></div>
+      <p><code>if: always()</code> matters — results should upload whether the suite passed or failed, same reasoning as <code>run-with-results-history.js</code> always updating <code>latest.json</code> regardless of exit code (§4).</p>
+    </section>
+
+    <section id="s14">
+      <h2><span class="num">14</span>Jenkins integration</h2>
+      <div class="callout note">
+        <span class="k">Not present in this repository</span>
+        <p>Same core constraint as GitHub Actions: a Jenkins pipeline stage is short-lived; the exporter must run outside the pipeline, continuously.</p>
+      </div>
+      <ol>
+        <li>Jenkins runs <code>npm run test:observed</code> inside <code>automation/playwright</code>.</li>
+        <li>Jenkins archives <code>automation/playwright/results/**</code> as build artifacts, and/or uploads to shared/S3 storage.</li>
+        <li>The exporter reads from a directory kept in sync with that shared location — a network volume, or a small sync job (cron + <code>aws s3 sync</code>, rsync) mirroring shared storage into the exporter's <code>RESULTS_DIR</code>.</li>
+      </ol>
+      <div class="codepane"><div class="codepane-head"><span class="codepane-tag">Jenkinsfile — example, does not exist yet</span><button class="codepane-copy" data-copy>Copy</button></div>
+      <pre><code>pipeline {
+  agent any
+  stages {
+    stage('Playwright') {
+      steps {
+        dir('automation/playwright') {
+          sh 'npm install'
+          sh 'npm run test:observed'
+        }
+      }
+    }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'automation/playwright/results/**', allowEmptyArchive: true
+      // e.g. sh 'aws s3 sync automation/playwright/results/ s3://ci-results/playwright/'
+    }
+  }
+}</code></pre></div>
+    </section>
+
+    <section id="s15">
+      <h2><span class="num">15</span>Adapting to existing company reporting systems</h2>
+      <p><strong>Key rule: only the reader changes. The exporter pattern stays the same.</strong></p>
+      <div class="diagram">
+        <div class="dnode"><b>Allure / JUnit XML / custom JSON / CI artifacts / S3</b></div>
+        <div class="darrow">↓</div>
+        <div class="dnode accent"><b>a new reader</b><small>parses the specific format</small></div>
+        <div class="darrow">↓</div>
+        <div class="dnode"><b>the same normalized shape</b><small>exists, total, passed, failed, skipped, pending, other, durationSeconds, completedAtSeconds</small></div>
+        <div class="darrow">↓</div>
+        <div class="dnode"><b>the same Prometheus metrics</b><small>automation.metrics.ts — unchanged</small></div>
+      </div>
+      <p>Concretely, to adopt this pattern against an existing Allure or JUnit XML setup:</p>
+      <ol>
+        <li>Write <code>allure-reader.ts</code> (or <code>junit-reader.ts</code>) implementing exactly the same function signature as <code>ctrf-reader.ts</code>'s <code>readCtrfRunResult</code> — same return shape, same "never throw, return an empty/zeroed result with <code>exists: false</code>" contract.</li>
+        <li>Write the equivalent of <code>runs-reader.ts</code> if the new format also has "many historical files," reusing the new reader per-file.</li>
+        <li>Point <code>update-latest-run.metrics.ts</code> / <code>update-history.metrics.ts</code> at the new reader instead of the CTRF one.</li>
+        <li>Leave <code>automation.metrics.ts</code>, both routers, <code>registry.ts</code>, <code>config.ts</code>, the Dockerfile, the Compose service, and the Prometheus job <strong>entirely untouched</strong> — they only ever consumed the normalized shape, never the original report format.</li>
+      </ol>
+      <p>If a company runs multiple frameworks at once (Playwright <em>and</em> a Java suite emitting JUnit XML), add a <code>suite</code> or <code>framework</code> label alongside <code>environment</code>/<code>status</code> on the same metrics, with one reader per format feeding the same gauges.</p>
+    </section>
+
+    <section id="s16">
+      <h2><span class="num">16</span>Production notes</h2>
+      <div class="callout warn">
+        <span class="k">Label cardinality</span>
+        <p>Do not put <code>test_name</code>, <code>run_id</code>, <code>error_message</code>, or <code>file_path</code> on a Prometheus label. Labels create a new time series per distinct value — unbounded cardinality (a test name, a UUID, a full error string) makes Prometheus's storage grow without bound and degrades query performance. This exporter correctly uses only <code>environment</code> and <code>status</code> — keep it that way.</p>
+      </div>
+      <ul>
+        <li>Use logs (Loki, later) for anything you'd want to grep — which test failed and why, stack traces, full error text. Use Prometheus purely for numeric health.</li>
+        <li><strong>Rotate old run files.</strong> <code>runs-reader.ts</code> scans the entire <code>runs/</code> directory on every scrape (§6) — fine at current scale; if history grows into the thousands, add rotation or move history into a real datastore rather than scaling the per-scrape directory scan indefinitely.</li>
+        <li>The exporter should never run tests — it only reads files and exposes metrics.</li>
+        <li>CI/CD generates reports; the exporter only ever consumes them. This separation keeps it simple and stateless.</li>
+        <li>A Dockerfile per service is the right unit for production packaging — this exporter's own image is exactly the shape you want for an eventual Kubernetes <code>Deployment</code> (§17).</li>
+        <li>Docker Compose is for local/single-host orchestration, not a production deployment target — the natural predecessor to Kubernetes manifests once you need multi-host scheduling, autoscaling, or managed rollouts.</li>
+      </ul>
+    </section>
+
+    <section id="s17">
+      <h2><span class="num">17</span>Future phases</h2>
+      <p>Not a timeline — a dependency-ordered list, each phase assuming the previous ones are in place.</p>
+      <div class="tablewrap"><div class="scroll-x"><table>
+        <thead><tr><th>Phase</th><th>What</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Playwright reports — CTRF JSON reporter configured</td><td>Done</td></tr>
+          <tr><td>2</td><td><code>latest.json</code> and <code>runs/*.json</code> — run archiving + "current" pointer</td><td>Done</td></tr>
+          <tr><td>3</td><td>Custom exporter — reads both, exposes <code>/metrics</code></td><td>Done</td></tr>
+          <tr><td>4</td><td>Docker Compose and Prometheus scrape</td><td>Done</td></tr>
+          <tr><td>5</td><td>PromQL validation — targets UP, queries return real data</td><td>Done</td></tr>
+          <tr><td>6</td><td>Grafana dashboard</td><td>Not started</td></tr>
+          <tr><td>7</td><td>Alertmanager rules — automation-specific (equivalent of the <code>api</code> service's <code>ApiTargetDown</code>-style rules)</td><td>Not started</td></tr>
+          <tr><td>8</td><td>Loki logs — ship the exporter's structured JSON stdout</td><td>Not started</td></tr>
+          <tr><td>9</td><td>OpenTelemetry / Tempo traces (mainly relevant to the <code>api</code> service)</td><td>Not started</td></tr>
+          <tr><td>10</td><td>Kubernetes Job/CronJob (Playwright) and Deployment (exporter)</td><td>Not started</td></tr>
+          <tr><td>11</td><td>Helm — package as a chart for repeatable deploys</td><td>Not started</td></tr>
+          <tr><td>12</td><td>Prometheus Operator + ServiceMonitor — dynamic scrape discovery</td><td>Not started</td></tr>
+        </tbody>
+      </table></div></div>
+    </section>
+
+    <section id="s18">
+      <h2><span class="num">18</span>Final summary</h2>
+      <div class="callout gotcha" style="border-left-color:var(--good)">
+        <p style="font-size:1.05rem; font-style:italic;">"I can implement Playwright automation observability by generating structured test reports, preserving latest and historical runs, exposing them through a custom Prometheus exporter, scraping them with Prometheus, and visualizing or alerting on automation health through Grafana and Alertmanager."</p>
+      </div>
+      <p>See also: the <a href="#" id="linkToRunbook">Visual Runbook</a> — a shorter, operational companion to keep open while working.</p>
+      <footer class="docfoot">Part 1 of 2 · Playwright → Prometheus Automation Observability · verified against <code>exposure-automation-lab</code></footer>
+    </section>
+  </main>
+</div>
+
+<div class="backtop"><a href="#s1" aria-label="Back to top">↑</a></div>
+
+<script>
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    btn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var effective = cur || (prefersDark ? 'dark' : 'light');
+      root.setAttribute('data-theme', effective === 'dark' ? 'light' : 'dark');
+    });
+
+    document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+
+    document.querySelectorAll('[data-copy]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var pre = b.closest('.codepane').querySelector('pre');
+        var text = pre.innerText;
+        if (navigator.clipboard) navigator.clipboard.writeText(text);
+        var orig = b.textContent; b.textContent = 'Copied'; setTimeout(function(){ b.textContent = orig; }, 1200);
+      });
+    });
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('#tocnav a'));
+    var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) { document.documentElement.style.scrollBehavior = 'smooth'; }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var id = e.target.getAttribute('id');
+        var link = links.find(function(a){ return a.getAttribute('href') === '#' + id; });
+        if (!link) return;
+        if (e.isIntersecting) {
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-10% 0px -75% 0px' });
+    sections.forEach(function(s){ io.observe(s); });
+  })();
+</script>

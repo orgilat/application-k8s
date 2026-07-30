@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "./.vscode/schemas/no-schema.json": [
+      "monitoring/grafana/provisioning/datasources/*.yml",
+      "monitoring/grafana/provisioning/dashboards/*.yml"
+    ]
+  }
+}

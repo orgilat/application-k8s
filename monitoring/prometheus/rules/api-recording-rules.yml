@@ -1,0 +1,41 @@
+groups:
+  - name: api-recording-rules
+    interval: 30s
+    rules:
+      - record: api:http_requests:rate5m
+        expr: sum(rate(http_requests_total[5m])) by (route, method, status_code)
+
+      - record: api:http_requests_by_route:rate5m
+        expr: sum(rate(http_requests_total[5m])) by (route)
+
+      - record: api:http_errors:rate5m
+        expr: sum(rate(http_errors_total[5m])) by (route)
+
+      - record: api:http_error_ratio:5m
+        expr: |
+          sum(rate(http_errors_total[5m])) by (route)
+          /
+          clamp_min(sum(rate(http_requests_total[5m])) by (route), 0.001)
+
+      - record: api:http_5xx:rate5m
+        expr: sum(rate(http_requests_total{status_code=~"5.."}[5m])) by (route)
+
+      - record: api:http_5xx_ratio:5m
+        expr: |
+          sum(rate(http_requests_total{status_code=~"5.."}[5m])) by (route)
+          /
+          clamp_min(sum(rate(http_requests_total[5m])) by (route), 0.001)
+
+      - record: api:http_request_duration:p95_5m
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (le, route)
+          )
+
+      - record: api:http_request_duration:p99_5m
+        expr: |
+          histogram_quantile(
+            0.99,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (le, route)
+          )

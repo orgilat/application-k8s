@@ -1,0 +1,12 @@
+{
+  "name": "exposure-automation-lab",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*", "automation/playwright"],
+  "scripts": {
+    "dev": "docker compose up --build",
+    "test": "cd automation/playwright && npm test",
+    "test:api": "cd automation/playwright && npm run test:api",
+    "test:ui": "cd automation/playwright && npm run test:ui"
+  }
+}

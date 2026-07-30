@@ -1,0 +1,5 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Permissive schema used to stop the YAML extension from wrongly auto-matching Grafana provisioning files against the unrelated Prometheus main-config schema (both happen to be named prometheus.yml).",
+  "additionalProperties": true
+}
