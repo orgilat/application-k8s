@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ include "exposure.fullname" . }}-web
+
+spec:
+  replicas: {{ .Values.web.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: web
+
+  template:
+
+    metadata:
+      labels:
+        app: web
+
+    spec:
+
+      containers:
+
+        - name: web
+
+          image: "{{ .Values.web.image.repository }}:{{ .Values.web.image.tag }}"
+          imagePullPolicy: IfNotPresent
+
+          ports:
+
+            - containerPort: {{ .Values.web.port }}
+
+          env:
+
+            - name: VITE_API_BASE_URL
+              value: http://api:3000

@@ -1,0 +1,43 @@
+replicaCount: 1
+
+api:
+  replicaCount: 2
+
+  image:
+    repository: exposure-api
+    tag: latest
+
+  port: 3000
+
+worker:
+  replicaCount: 1
+
+  image:
+    repository: exposure-worker
+    tag: latest
+
+
+web:
+  replicaCount: 1
+
+  image:
+    repository: exposure-web
+    tag: latest
+
+  port: 5173
+
+
+postgres:
+  image:
+    repository: postgres
+    tag: "15-alpine"
+
+  database: exposureops
+  username: exposureops
+  password: exposureops
+
+
+redis:
+  image:
+    repository: redis
+    tag: "7-alpine"

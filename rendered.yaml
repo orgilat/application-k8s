@@ -1,0 +1,309 @@
+---
+# Source: exposure/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+
+metadata:
+  name: exposure-exposure-secret
+
+type: Opaque
+
+stringData:
+
+  POSTGRES_USER: exposureops
+  POSTGRES_PASSWORD: exposureops
+---
+# Source: exposure/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: exposure-exposure-config
+
+data:
+  NODE_ENV: "production"
+  LOG_LEVEL: "info"
+---
+# Source: exposure/templates/api-service.yaml
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: exposure-exposure-api
+
+spec:
+  selector:
+    app: api
+
+  ports:
+    - port: 3000
+      targetPort: 3000
+
+  type: ClusterIP
+---
+# Source: exposure/templates/postgres-service.yaml
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: postgres
+
+spec:
+  selector:
+    app: postgres
+
+  ports:
+    - port: 5432
+      targetPort: 5432
+
+  type: ClusterIP
+---
+# Source: exposure/templates/redis-service.yaml
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: redis
+
+spec:
+  selector:
+    app: redis
+
+  ports:
+    - port: 6379
+      targetPort: 6379
+
+  type: ClusterIP
+---
+# Source: exposure/templates/web-service.yaml
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: web
+
+spec:
+
+  selector:
+    app: web
+
+  ports:
+
+    - port: 5173
+      targetPort: 5173
+
+  type: ClusterIP
+---
+# Source: exposure/templates/api-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: exposure-exposure-api
+
+  labels:
+    app.kubernetes.io/name: exposure
+    app.kubernetes.io/instance: exposure
+    app.kubernetes.io/managed-by: Helm
+
+spec:
+
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: api
+
+  template:
+
+    metadata:
+      labels:
+        app: api
+
+    spec:
+
+      containers:
+
+        - name: api
+
+          image: "exposure-api:latest"
+
+          ports:
+            - containerPort: 3000
+
+          env:
+
+            - name: NODE_ENV
+              value: local
+
+            - name: DATABASE_URL
+              value: postgresql://exposureops:exposureops@postgres:5432/exposureops
+
+            - name: REDIS_URL
+              value: redis://redis:6379
+---
+# Source: exposure/templates/redis-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: exposure-exposure-redis
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: redis
+
+  template:
+    metadata:
+      labels:
+        app: redis
+
+    spec:
+      containers:
+        - name: redis
+
+          image: "redis:7-alpine"
+
+          ports:
+            - containerPort: 6379
+---
+# Source: exposure/templates/web-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: exposure-exposure-web
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: web
+
+  template:
+
+    metadata:
+      labels:
+        app: web
+
+    spec:
+
+      containers:
+
+        - name: web
+
+          image: "exposure-web:latest"
+
+          ports:
+
+            - containerPort: 5173
+
+          env:
+
+            - name: VITE_API_BASE_URL
+              value: http://api:3000
+---
+# Source: exposure/templates/worker-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: exposure-exposure-worker
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: worker
+
+  template:
+
+    metadata:
+      labels:
+        app: worker
+
+    spec:
+
+      containers:
+
+        - name: worker
+
+          image: "exposure-worker:latest"
+
+          env:
+
+            - name: DATABASE_URL
+              value: postgresql://exposureops:exposureops@postgres:5432/exposureops
+
+            - name: REDIS_URL
+              value: redis://redis:6379
+---
+# Source: exposure/templates/postgres-statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+
+metadata:
+  name: exposure-exposure-postgres
+
+spec:
+  serviceName: postgres
+
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: postgres
+
+  template:
+
+    metadata:
+      labels:
+        app: postgres
+
+    spec:
+
+      containers:
+
+        - name: postgres
+
+          image: "postgres:15-alpine"
+
+          ports:
+            - containerPort: 5432
+
+          env:
+
+            - name: POSTGRES_DB
+              value: exposureops
+
+            - name: POSTGRES_USER
+              value: exposureops
+
+            - name: POSTGRES_PASSWORD
+              value: exposureops
+
+          volumeMounts:
+
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+
+
+  volumeClaimTemplates:
+
+    - metadata:
+        name: postgres-data
+
+      spec:
+
+        accessModes:
+          - ReadWriteOnce
+
+        resources:
+
+          requests:
+            storage: 5Gi
