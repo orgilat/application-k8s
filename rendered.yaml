@@ -127,6 +127,7 @@ spec:
         - name: api
 
           image: "exposure-api:latest"
+          imagePullPolicy: IfNotPresent
 
           ports:
             - containerPort: 3000
@@ -166,6 +167,7 @@ spec:
         - name: redis
 
           image: "redis:7-alpine"
+          imagePullPolicy: IfNotPresent
 
           ports:
             - containerPort: 6379
@@ -197,6 +199,7 @@ spec:
         - name: web
 
           image: "exposure-web:latest"
+          imagePullPolicy: IfNotPresent
 
           ports:
 
@@ -205,7 +208,7 @@ spec:
           env:
 
             - name: VITE_API_BASE_URL
-              value: http://api:3000
+              value: http://exposure-exposure-api:3000
 ---
 # Source: exposure/templates/worker-deployment.yaml
 apiVersion: apps/v1
@@ -234,6 +237,7 @@ spec:
         - name: worker
 
           image: "exposure-worker:latest"
+          imagePullPolicy: IfNotPresent
 
           env:
 
@@ -272,6 +276,7 @@ spec:
         - name: postgres
 
           image: "postgres:15-alpine"
+          imagePullPolicy: IfNotPresent
 
           ports:
             - containerPort: 5432
