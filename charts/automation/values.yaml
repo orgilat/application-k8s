@@ -1,0 +1,20 @@
+image:
+  repository: exposure-playwright-runner
+  tag: latest
+  pullPolicy: IfNotPresent
+
+job:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 3600
+
+resources:
+  requests:
+    cpu: "500m"
+    memory: "512Mi"
+  limits:
+    cpu: "1"
+    memory: "1Gi"
+
+env:
+  baseUrl: http://web:5173
+  apiUrl: http://exposure-exposure-api:3000
